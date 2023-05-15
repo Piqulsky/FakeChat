@@ -1,2 +1,2 @@
 # FakeChat
-Programmable chat application to use without concern about rights
+Programmable pseudo chat application to use without concern about rights
