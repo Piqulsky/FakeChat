@@ -14,7 +14,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewReceiver"
             android:layout_width="75sp"
             android:layout_height="75sp"
             android:paddingTop="10sp"
@@ -51,7 +51,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="575sp"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:reverseLayout="false"
+            app:stackFromEnd="true" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,7 +70,7 @@
             android:id="@+id/editTextMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
+            android:layout_marginStart="10sp"
             android:layout_marginTop="10sp"
             android:background="#FFFFFF"
             android:ems="10"
@@ -72,13 +79,13 @@
             android:paddingStart="10sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
-            android:textSize="24sp" />
+            android:textSize="28sp" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageViewSend"
             android:layout_width="70sp"
             android:layout_height="70sp"
-            android:layout_marginStart="40sp"
+            android:layout_marginStart="5sp"
             app:srcCompat="@android:drawable/ic_media_play" />
 
     </LinearLayout>
