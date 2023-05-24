@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,12 +25,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        receiver = "Receiver";
+        receiver = "Receiver1";
 
         appData = new HashMap<>();
-        appData.put("Receiver", createDataArray());
+        appData.put("Receiver1", createDataArray());
+        appData.put("Receiver2", createDataArray());
+        appData.put("Receiver3", createDataArray());
+        appData.put("Receiver4", createDataArray());
+        appData.put("Receiver5", createDataArray());
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerViewMessages);
         recyclerAdapter = new MessagesAdapter(appData.get(receiver), this);
         recyclerView.setAdapter(recyclerAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -42,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
             if(!editTextMessage.getText().toString().equals(""))
                 MainActivity.this.addToRecyclerData(new MessagesData(MessagesData.LAYOUT_MESSAGE_SENT, editTextMessage.getText().toString()));
             editTextMessage.setText("");
+        });
+
+        ImageView returnButton = findViewById(R.id.imageViewReturn);
+        returnButton.setOnClickListener(view -> {
+            Intent chats =  new Intent(this, ChatsActivity.class);
+            chats.putExtra("AppDataKeys", appData.keySet().toArray());
+            chats.putExtra("AppDataValues", appData.values().toArray());
+            startActivity(chats);
         });
     }
 

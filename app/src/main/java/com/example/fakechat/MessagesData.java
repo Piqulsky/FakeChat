@@ -1,6 +1,8 @@
 package com.example.fakechat;
 
-public class MessagesData {
+import java.io.Serializable;
+
+public class MessagesData implements Serializable {
     public static final int LAYOUT_MESSAGE_RECEIVED = 0;
     public static final int LAYOUT_MESSAGE_SENT = 1;
     private int viewType;
