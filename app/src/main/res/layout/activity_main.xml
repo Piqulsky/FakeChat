@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="700sp"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FF5722"
+        android:background="#FF9800"
         android:orientation="horizontal">
 
         <ImageView
@@ -29,7 +29,6 @@
                 android:id="@+id/textViewReceiver"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FF5722"
                 android:paddingStart="10sp"
                 android:paddingTop="10sp"
                 android:text="Receiver"
@@ -50,20 +49,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="575sp"
+        android:layout_height="500sp"
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:reverseLayout="false"
-            app:stackFromEnd="true" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FF5722"
+        android:background="#FF9800"
         android:orientation="horizontal">
 
         <EditText
