@@ -4,17 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.fakechat.ChatData;
 import com.example.fakechat.R;
-import com.example.fakechat.messages.MessagesData;
+import com.example.fakechat.messages.MainActivity;
+import com.example.fakechat.messages.MessageData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ChatsActivity extends AppCompatActivity {
-    private Map<String, ArrayList<MessagesData>> appData;
+    private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private ChatsAdapter recyclerAdapter;
     @Override
@@ -23,19 +26,21 @@ public class ChatsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chats);
 
         Bundle extras = getIntent().getExtras();
-        Object[] appDataKeys = (Object[]) extras.get("AppDataKeys");
-        Object[] appDataValues = (Object[]) extras.get("AppDataValues");
-
-        appData = new HashMap<>();
-        for (int i = 0; i < appDataValues.length; i++) {
-            appData.put(String.valueOf(appDataKeys[i]), (ArrayList<MessagesData>) appDataValues[i]);
-        }
+        appData = extras.getParcelableArrayList("AppData", ChatData.class);
 
         recyclerView = findViewById(R.id.recyclerViewChats);
-        ArrayList dataKeys = new ArrayList<>();
-        dataKeys.addAll(appData.keySet());
-        recyclerAdapter = new ChatsAdapter(dataKeys, this);
+        ArrayList<String> chatNames = new ArrayList<>();
+        ArrayList<Integer> chatAvatars = new ArrayList<>();
+        appData.forEach((ChatData chat) -> {
+            chatNames.add(chat.getReceiverName());
+            chatAvatars.add(chat.getAvatar());
+        });
+        recyclerAdapter = new ChatsAdapter(chatNames, this, appData);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public void startChat(int receiverIndex){
+
     }
 }

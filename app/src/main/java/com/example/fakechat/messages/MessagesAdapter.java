@@ -1,7 +1,7 @@
 package com.example.fakechat.messages;
 
-import static com.example.fakechat.messages.MessagesData.LAYOUT_MESSAGE_RECEIVED;
-import static com.example.fakechat.messages.MessagesData.LAYOUT_MESSAGE_SENT;
+import static com.example.fakechat.messages.MessageData.LAYOUT_MESSAGE_RECEIVED;
+import static com.example.fakechat.messages.MessageData.LAYOUT_MESSAGE_SENT;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,9 +16,9 @@ import com.example.fakechat.R;
 import java.util.ArrayList;
 
 public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<MessagesData> list;
+    private ArrayList<MessageData> list;
     private Context context;
-    public MessagesAdapter(ArrayList<MessagesData> list, Context context){
+    public MessagesAdapter(ArrayList<MessageData> list, Context context){
         this.list = list; this.context = context;
     }
     @Override
