@@ -32,7 +32,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
     @Override
     public void onBindViewHolder(@NonNull ChatHolder holder, int position) {
         holder.setReceiverName(list.get(position));
-        holder.getImageViewButton().setOnClickListener(view -> {
+        holder.getImageButton().setOnClickListener(view -> {
             Intent chat =  new Intent(context, MainActivity.class);
             chat.putExtra("AppData", appData);
             chat.putExtra("ReceiverIndex", position);

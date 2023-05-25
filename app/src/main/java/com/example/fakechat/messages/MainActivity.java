@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        ImageView sendButton = findViewById(R.id.imageViewSend);
+        ImageButton sendButton = findViewById(R.id.imageViewSend);
         sendButton.setOnClickListener(view -> {
             EditText editTextMessage = findViewById(R.id.editTextMessage);
             if(!editTextMessage.getText().toString().equals(""))
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             editTextMessage.setText("");
         });
 
-        ImageView returnButton = findViewById(R.id.imageViewReturn);
+        ImageButton returnButton = findViewById(R.id.imageViewReturn);
         returnButton.setOnClickListener(view -> {
             Intent chats =  new Intent(this, ChatsActivity.class);
             chats.putExtra("AppData", appData);

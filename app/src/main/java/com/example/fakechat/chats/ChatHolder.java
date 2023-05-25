@@ -1,6 +1,7 @@
 package com.example.fakechat.chats;
 
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,7 +13,7 @@ import com.example.fakechat.R;
 public class ChatHolder extends RecyclerView.ViewHolder {
     private TextView textViewReceiver;
     private ImageView imageViewAvatar;
-    private ImageView imageViewButton;
+    private ImageButton imageViewButton;
     public ChatHolder(@NonNull View itemView) {
         super(itemView);
         textViewReceiver = itemView.findViewById(R.id.textViewChatReceiver);
@@ -23,7 +24,7 @@ public class ChatHolder extends RecyclerView.ViewHolder {
     public void setReceiverName(String name){textViewReceiver.setText(name);}
     public void setAvatarResource(int res){imageViewAvatar.setImageResource(res);}
     public void setButtonResource(int res){imageViewButton.setImageResource(res);}
-    public ImageView getImageViewButton() {
+    public ImageButton getImageButton() {
         return imageViewButton;
     }
 }

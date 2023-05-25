@@ -13,12 +13,14 @@
         android:background="#FF9800"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageViewReturn"
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_gravity="center"
-            app:srcCompat="@android:drawable/ic_menu_revert" />
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/ic_menu_revert" />
 
         <ImageView
             android:id="@+id/imageViewReceiver"
@@ -53,12 +55,14 @@
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageViewRefresh"
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_gravity="center"
-            app:srcCompat="@android:drawable/ic_menu_rotate" />
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/ic_menu_rotate" />
 
     </LinearLayout>
 
@@ -80,11 +84,13 @@
         android:background="#FF9800"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageViewCall"
             android:layout_width="60sp"
             android:layout_height="60sp"
-            app:srcCompat="@android:drawable/ic_menu_call" />
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/ic_menu_call" />
 
         <EditText
             android:id="@+id/editTextMessage"
@@ -100,11 +106,13 @@
             android:paddingBottom="5sp"
             android:textSize="24sp" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageViewSend"
             android:layout_width="60sp"
             android:layout_height="60sp"
-            app:srcCompat="@android:drawable/ic_menu_send" />
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/ic_menu_send" />
 
     </LinearLayout>
 </LinearLayout>
