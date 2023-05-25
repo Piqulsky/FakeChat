@@ -1,4 +1,4 @@
-package com.example.fakechat;
+package com.example.fakechat.messages;
 
 import java.io.Serializable;
 

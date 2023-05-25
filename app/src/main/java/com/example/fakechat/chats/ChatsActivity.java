@@ -1,19 +1,22 @@
-package com.example.fakechat;
+package com.example.fakechat.chats;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.fakechat.R;
+import com.example.fakechat.messages.MessagesData;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ChatsActivity extends AppCompatActivity {
     private Map<String, ArrayList<MessagesData>> appData;
     private RecyclerView recyclerView;
-    private MessagesAdapter recyclerAdapter;
+    private ChatsAdapter recyclerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,5 +30,12 @@ public class ChatsActivity extends AppCompatActivity {
         for (int i = 0; i < appDataValues.length; i++) {
             appData.put(String.valueOf(appDataKeys[i]), (ArrayList<MessagesData>) appDataValues[i]);
         }
+
+        recyclerView = findViewById(R.id.recyclerViewChats);
+        ArrayList dataKeys = new ArrayList<>();
+        dataKeys.addAll(appData.keySet());
+        recyclerAdapter = new ChatsAdapter(dataKeys, this);
+        recyclerView.setAdapter(recyclerAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }

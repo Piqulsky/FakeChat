@@ -1,7 +1,7 @@
-package com.example.fakechat;
+package com.example.fakechat.messages;
 
-import static com.example.fakechat.MessagesData.LAYOUT_MESSAGE_RECEIVED;
-import static com.example.fakechat.MessagesData.LAYOUT_MESSAGE_SENT;
+import static com.example.fakechat.messages.MessagesData.LAYOUT_MESSAGE_RECEIVED;
+import static com.example.fakechat.messages.MessagesData.LAYOUT_MESSAGE_SENT;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.fakechat.R;
 
 import java.util.ArrayList;
 

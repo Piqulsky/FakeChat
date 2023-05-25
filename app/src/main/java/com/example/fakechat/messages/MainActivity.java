@@ -1,4 +1,4 @@
-package com.example.fakechat;
+package com.example.fakechat.messages;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import java.io.Serializable;
+import com.example.fakechat.chats.ChatsActivity;
+import com.example.fakechat.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
