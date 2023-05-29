@@ -13,8 +13,19 @@
         android:theme="@style/Theme.FakeChat"
         tools:targetApi="33">
         <activity
+            android:name=".settings.SettingsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".chats.ChatsActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+            </activity>
         <activity
             android:name=".messages.MainActivity"
             android:exported="true"

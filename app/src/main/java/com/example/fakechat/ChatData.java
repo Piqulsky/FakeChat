@@ -13,7 +13,7 @@ public class ChatData implements Serializable {
 
     public ChatData(){
         receiverName = "EmptyName";
-        avatar = R.drawable.ic_launcher_foreground;
+        avatar = R.drawable.avatar;
         messagesData = new ArrayList<>();
     }
     public ChatData(String receiverName, int avatar, ArrayList<MessageData> messagesData){

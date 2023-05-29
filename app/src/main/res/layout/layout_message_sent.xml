@@ -20,7 +20,7 @@
         android:paddingEnd="10sp"
         android:paddingBottom="5sp"
         android:text="Message content"
-        android:textAlignment="textEnd"
+        android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
 </RelativeLayout>

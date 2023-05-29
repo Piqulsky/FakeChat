@@ -9,7 +9,7 @@
         android:id="@+id/imageViewSender"
         android:layout_width="50sp"
         android:layout_height="50sp"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/avatar" />
 
     <TextView
         android:id="@+id/textViewMessageReceived"

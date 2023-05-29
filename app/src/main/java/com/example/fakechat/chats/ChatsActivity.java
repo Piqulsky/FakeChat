@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import com.example.fakechat.ChatData;
 import com.example.fakechat.R;
 import com.example.fakechat.messages.MainActivity;
 import com.example.fakechat.messages.MessageData;
+import com.example.fakechat.settings.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,9 +40,12 @@ public class ChatsActivity extends AppCompatActivity {
         recyclerAdapter = new ChatsAdapter(chatNames, this, appData);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
 
-    public void startChat(int receiverIndex){
-
+        ImageButton moreButton = findViewById(R.id.imageViewMore);
+        moreButton.setOnClickListener(view -> {
+            Intent settings =  new Intent(this, SettingsActivity.class);
+            settings.putExtra("AppData", appData);
+            startActivity(settings);
+        });
     }
 }

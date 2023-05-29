@@ -17,20 +17,34 @@
             android:id="@+id/imageViewChatSign"
             android:layout_width="75sp"
             android:layout_height="75sp"
-            android:paddingTop="10sp"
-            android:paddingBottom="10sp"
+            android:paddingLeft="20sp"
+            android:paddingTop="20sp"
+            android:paddingRight="20sp"
+            android:paddingBottom="20sp"
             app:srcCompat="@android:drawable/stat_notify_chat" />
 
         <TextView
             android:id="@+id/textViewChats"
-            android:layout_width="match_parent"
+            android:layout_width="245sp"
             android:layout_height="match_parent"
             android:paddingStart="10sp"
-            android:paddingTop="10sp"
+            android:paddingTop="15sp"
             android:text="Chats"
             android:textColor="#FFFFFF"
-            android:textSize="36sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/imageViewMore"
+            android:layout_width="75sp"
+            android:layout_height="75sp"
+            android:paddingLeft="20sp"
+            android:paddingTop="20sp"
+            android:paddingRight="20sp"
+            android:paddingBottom="20sp"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/ic_menu_sort_by_size" />
 
     </LinearLayout>
 

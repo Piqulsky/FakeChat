@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
             receiver = extras.getInt("ReceiverIndex");
         }catch (Exception e){
             appData = new ArrayList<>();
-            appData.add(new ChatData("Receiver1", R.drawable.ic_launcher_foreground, createDataArray()));
-            appData.add(new ChatData("Receiver2", R.drawable.ic_launcher_foreground, new ArrayList<>()));
+            appData.add(new ChatData("Receiver1", R.drawable.avatar, createDataArray()));
+            appData.add(new ChatData("Receiver2", R.drawable.avatar, new ArrayList<>()));
             appData.add(new ChatData());
             appData.add(new ChatData());
             appData.add(new ChatData());
@@ -71,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<MessageData> createDataArray(){
         ArrayList<MessageData> list = new ArrayList<>();
 
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received", R.drawable.ic_launcher_foreground));
+        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received", R.drawable.avatar));
         list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent"));
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received that is definitely much more longer and should be split", R.drawable.ic_launcher_foreground));
+        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received that is definitely much more longer and should be split", R.drawable.avatar));
         list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent"));
         list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent that is definitely much more longer and should be split"));
 
