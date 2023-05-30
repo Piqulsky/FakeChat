@@ -8,6 +8,7 @@
     tools:context=".messages.MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayoutChatsHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FF9800"
@@ -38,11 +39,11 @@
             android:id="@+id/imageViewMore"
             android:layout_width="75sp"
             android:layout_height="75sp"
+            android:background="?android:attr/selectableItemBackground"
             android:paddingLeft="20sp"
             android:paddingTop="20sp"
             android:paddingRight="20sp"
             android:paddingBottom="20sp"
-            android:background="?android:attr/selectableItemBackground"
             android:scaleType="fitXY"
             android:src="@android:drawable/ic_menu_sort_by_size" />
 

@@ -1,5 +1,6 @@
 package com.example.fakechat.messages;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,4 +20,5 @@ public class SentMessageHolder extends RecyclerView.ViewHolder {
     public void setMessage(String message) {
         textViewMessage.setText(message);
     }
+    public void setColor(String color) {textViewMessage.setBackgroundColor(Color.parseColor(color));}
 }

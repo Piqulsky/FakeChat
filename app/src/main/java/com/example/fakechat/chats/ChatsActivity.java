@@ -5,20 +5,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.fakechat.ChatData;
 import com.example.fakechat.R;
-import com.example.fakechat.messages.MainActivity;
-import com.example.fakechat.messages.MessageData;
 import com.example.fakechat.settings.SettingsActivity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ChatsActivity extends AppCompatActivity {
+    private String chatsName;
+    private String colorHex;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private ChatsAdapter recyclerAdapter;
@@ -29,6 +30,14 @@ public class ChatsActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         appData = extras.getParcelableArrayList("AppData", ChatData.class);
+        chatsName = extras.getString("ChatsName");
+        colorHex = extras.getString("ColorHex");
+
+        LinearLayout linearLayoutHeader = findViewById(R.id.linearLayoutChatsHeader);
+        linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));
+
+        TextView textViewChats = findViewById(R.id.textViewChats);
+        textViewChats.setText(chatsName);
 
         recyclerView = findViewById(R.id.recyclerViewChats);
         ArrayList<String> chatNames = new ArrayList<>();
@@ -37,7 +46,7 @@ public class ChatsActivity extends AppCompatActivity {
             chatNames.add(chat.getReceiverName());
             chatAvatars.add(chat.getAvatar());
         });
-        recyclerAdapter = new ChatsAdapter(chatNames, this, appData);
+        recyclerAdapter = new ChatsAdapter(chatNames, this, appData, chatsName, colorHex);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -45,6 +54,8 @@ public class ChatsActivity extends AppCompatActivity {
         moreButton.setOnClickListener(view -> {
             Intent settings =  new Intent(this, SettingsActivity.class);
             settings.putExtra("AppData", appData);
+            settings.putExtra("ChatsName", chatsName);
+            settings.putExtra("ColorHex", colorHex);
             startActivity(settings);
         });
     }

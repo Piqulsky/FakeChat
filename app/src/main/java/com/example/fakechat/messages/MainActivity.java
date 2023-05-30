@@ -5,13 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.fakechat.ChatData;
+import com.example.fakechat.MessageData;
 import com.example.fakechat.chats.ChatsActivity;
 import com.example.fakechat.R;
 
@@ -19,6 +21,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private int receiver;
+    private String chatsName;
+    private String colorHex;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private MessagesAdapter recyclerAdapter;
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         try{
             appData = extras.getParcelableArrayList("AppData", ChatData.class);
             receiver = extras.getInt("ReceiverIndex");
+            chatsName = extras.getString("ChatsName");
+            colorHex = extras.getString("ColorHex");
         }catch (Exception e){
             appData = new ArrayList<>();
             appData.add(new ChatData("Receiver1", R.drawable.avatar, createDataArray()));
@@ -40,12 +46,19 @@ public class MainActivity extends AppCompatActivity {
             appData.add(new ChatData());
 
             receiver = 0;
+            chatsName = "Chats";
+            colorHex = "#FF9800";
         }
         TextView textViewReceiverName = findViewById(R.id.textViewReceiver);
         textViewReceiverName.setText(appData.get(receiver).getReceiverName());
 
+        LinearLayout linearLayoutHeader = findViewById(R.id.linearLayoutMainHeader);
+        linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));
+        LinearLayout linearLayoutFooter = findViewById(R.id.linearLayoutMainFooter);
+        linearLayoutFooter.setBackgroundColor(Color.parseColor(colorHex));
+
         recyclerView = findViewById(R.id.recyclerViewMessages);
-        recyclerAdapter = new MessagesAdapter(appData.get(receiver).getMessagesData(), this);
+        recyclerAdapter = new MessagesAdapter(appData.get(receiver).getMessagesData(), this, colorHex);
         recyclerView.setAdapter(recyclerAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(false);
@@ -64,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         returnButton.setOnClickListener(view -> {
             Intent chats =  new Intent(this, ChatsActivity.class);
             chats.putExtra("AppData", appData);
+            chats.putExtra("ChatsName", chatsName);
+            chats.putExtra("ColorHex", colorHex);
             startActivity(chats);
         });
     }

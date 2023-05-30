@@ -31,7 +31,16 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
         holder.setReceiverName(appData.get(position).getReceiverName());
         holder.setAvatarResource(appData.get(position).getAvatar());
         holder.setSwitchOnline(true); //DEBUG
-        holder.setRecyclerViewMessages(appData.get(position).getMessagesData());
+        holder.setRecyclerViewMessages(appData.get(position).getMessagesData()); //DEBUG
+//        holder.getImageViewMore().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(holder.getRecyclerArrayList() != appData.get(holder.getAdapterPosition()).getMessagesData())
+//                    holder.setRecyclerViewMessages(appData.get(holder.getAdapterPosition()).getMessagesData());
+//                else
+//                    holder.setRecyclerViewMessages(new ArrayList<>());
+//            }
+//        });
     }
 
     @Override

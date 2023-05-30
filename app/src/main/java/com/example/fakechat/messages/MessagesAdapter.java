@@ -1,7 +1,7 @@
 package com.example.fakechat.messages;
 
-import static com.example.fakechat.messages.MessageData.LAYOUT_MESSAGE_RECEIVED;
-import static com.example.fakechat.messages.MessageData.LAYOUT_MESSAGE_SENT;
+import static com.example.fakechat.MessageData.LAYOUT_MESSAGE_RECEIVED;
+import static com.example.fakechat.MessageData.LAYOUT_MESSAGE_SENT;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,15 +11,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fakechat.MessageData;
 import com.example.fakechat.R;
 
 import java.util.ArrayList;
 
 public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<MessageData> list;
+    private String colorHex;
     private Context context;
-    public MessagesAdapter(ArrayList<MessageData> list, Context context){
-        this.list = list; this.context = context;
+    public MessagesAdapter(ArrayList<MessageData> list, Context context, String colorHex){
+        this.list = list; this.context = context; this.colorHex = colorHex;
     }
     @Override
     public int getItemViewType(int position) {
@@ -57,6 +59,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 break;
             case LAYOUT_MESSAGE_SENT:
                 ((SentMessageHolder) holder).setMessage(list.get(position).getItemMessage());
+                ((SentMessageHolder) holder).setColor(colorHex);
                 break;
             default:
                 break;

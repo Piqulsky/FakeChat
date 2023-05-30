@@ -1,4 +1,4 @@
-package com.example.fakechat.messages;
+package com.example.fakechat;
 
 import java.io.Serializable;
 
@@ -8,10 +8,10 @@ public class MessageData implements Serializable {
     private int viewType;
     private String message;
     private int imageResource;
-    MessageData(int viewType, String message){
+    public MessageData(int viewType, String message){
         this.viewType = viewType; this.message = message;
     }
-    MessageData(int viewType, String message, int imageResource){
+    public MessageData(int viewType, String message, int imageResource){
         this.viewType = viewType; this.message = message; this.imageResource = imageResource;
     }
 

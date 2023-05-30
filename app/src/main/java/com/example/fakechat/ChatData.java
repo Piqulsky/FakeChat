@@ -1,7 +1,5 @@
 package com.example.fakechat;
 
-import com.example.fakechat.messages.MessageData;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 

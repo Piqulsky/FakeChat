@@ -18,9 +18,11 @@ import java.util.ArrayList;
 public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
     private ArrayList<String> list;
     private ArrayList<ChatData> appData;
+    private String chatsName;
+    private String colorHex;
     private Context context;
-    public ChatsAdapter(ArrayList<String> list, Context context, ArrayList<ChatData> appData){
-        this.list = list; this.context = context; this.appData = appData;
+    public ChatsAdapter(ArrayList<String> list, Context context, ArrayList<ChatData> appData, String chatsName, String colorHex){
+        this.list = list; this.context = context; this.appData = appData; this.chatsName = chatsName; this.colorHex = colorHex;
     }
     @NonNull
     @Override
@@ -36,6 +38,8 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
             Intent chat =  new Intent(context, MainActivity.class);
             chat.putExtra("AppData", appData);
             chat.putExtra("ReceiverIndex", position);
+            chat.putExtra("ChatsName", chatsName);
+            chat.putExtra("ColorHex", colorHex);
             context.startActivity(chat);
         });
     }

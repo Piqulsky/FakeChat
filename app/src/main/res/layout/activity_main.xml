@@ -8,6 +8,7 @@
     tools:context=".messages.MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayoutMainHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FF9800"
@@ -79,6 +80,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayoutMainFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FF9800"
