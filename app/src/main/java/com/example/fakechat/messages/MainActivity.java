@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
             colorHex = extras.getString("ColorHex");
         }catch (Exception e){
             appData = new ArrayList<>();
-            appData.add(new ChatData("Receiver1", R.drawable.avatar, createDataArray()));
-            appData.add(new ChatData("Receiver2", R.drawable.avatar, new ArrayList<>()));
+            appData.add(new ChatData("Stefan", R.drawable.avatar, createDataArray()));
+            appData.add(new ChatData("Felix", R.drawable.niles, new ArrayList<>()));
             appData.get(1).setActivity("15m ago");
             appData.add(new ChatData());
             appData.get(2).setRead(false);

@@ -17,13 +17,12 @@ import com.example.fakechat.messages.MainActivity;
 import java.util.ArrayList;
 
 public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
-    private ArrayList<String> list;
     private ArrayList<ChatData> appData;
     private String chatsName;
     private String colorHex;
     private Context context;
-    public ChatsAdapter(ArrayList<String> list, Context context, ArrayList<ChatData> appData, String chatsName, String colorHex){
-        this.list = list; this.context = context; this.appData = appData; this.chatsName = chatsName; this.colorHex = colorHex;
+    public ChatsAdapter(ArrayList<ChatData> appData,Context context, String chatsName, String colorHex){
+        this.appData = appData; this.context = context; this.chatsName = chatsName; this.colorHex = colorHex;
     }
     @NonNull
     @Override
@@ -34,7 +33,8 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ChatHolder holder, int position) {
-        holder.setReceiverName(list.get(position));
+        holder.setReceiverName(appData.get(position).getReceiverName());
+        holder.setAvatarResource(appData.get(position).getAvatar());
         if(!appData.get(position).getRead())
             holder.getTextViewReceiver().setTypeface(null, Typeface.BOLD);
         holder.getImageButton().setOnClickListener(view -> {
@@ -49,6 +49,6 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return appData.size();
     }
 }

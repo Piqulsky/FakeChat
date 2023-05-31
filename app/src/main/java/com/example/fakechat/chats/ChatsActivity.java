@@ -46,7 +46,7 @@ public class ChatsActivity extends AppCompatActivity {
             chatNames.add(chat.getReceiverName());
             chatAvatars.add(chat.getAvatar());
         });
-        recyclerAdapter = new ChatsAdapter(chatNames, this, appData, chatsName, colorHex);
+        recyclerAdapter = new ChatsAdapter(appData, this, chatsName, colorHex);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
