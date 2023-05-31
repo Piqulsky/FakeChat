@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.fakechat.CallActivity;
 import com.example.fakechat.ChatData;
 import com.example.fakechat.MessageData;
 import com.example.fakechat.chats.ChatsActivity;
@@ -93,6 +95,16 @@ public class MainActivity extends AppCompatActivity {
             chats.putExtra("ColorHex", colorHex);
             startActivity(chats);
         });
+
+        ImageButton callButton = findViewById(R.id.imageViewCall);
+        callButton.setOnClickListener(view -> {
+            Intent call =  new Intent(this, CallActivity.class);
+            call.putExtra("AppData", appData);
+            call.putExtra("ChatsName", chatsName);
+            call.putExtra("ColorHex", colorHex);
+            call.putExtra("ReceiverIndex", receiver);
+            startActivity(call);
+        });
     }
 
     private ArrayList<MessageData> createDataArray(){
@@ -114,6 +126,5 @@ public class MainActivity extends AppCompatActivity {
     public void addToRecyclerData(MessageData messageData){
         appData.get(receiver).addMessageData(messageData);
         recyclerView.scrollToPosition(recyclerAdapter.getItemCount() - 1);
-        recyclerAdapter.notifyDataSetChanged();
     }
 }
