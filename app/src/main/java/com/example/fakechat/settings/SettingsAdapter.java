@@ -1,6 +1,8 @@
 package com.example.fakechat.settings;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,30 +30,43 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
         settingHolders.add(holder);
         return holder;
     }
-
     @Override
     public void onBindViewHolder(@NonNull SettingHolder holder, int position) {
         holder.setReceiverName(appData.get(position).getReceiverName());
         holder.setAvatarResource(appData.get(position).getAvatar());
-        holder.setSwitchOnline(true); //DEBUG
-        holder.setRecyclerViewMessages(appData.get(position).getMessagesData()); //DEBUG
-//        holder.getImageViewMore().setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(holder.getRecyclerArrayList() != appData.get(holder.getAdapterPosition()).getMessagesData())
-//                    holder.setRecyclerViewMessages(appData.get(holder.getAdapterPosition()).getMessagesData());
-//                else
-//                    holder.setRecyclerViewMessages(new ArrayList<>());
-//            }
-//        });
-    }
+        holder.setSwitchOnline(appData.get(position).getActivity());
+        holder.setRecyclerViewMessages(appData, position);
+        holder.getEditTextReceiver().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                appData.get(holder.getAdapterPosition()).setReceiverName(editable.toString());
+            }
+        });
+        holder.getEditTextActivity().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                appData.get(holder.getAdapterPosition()).setActivity(editable.toString());
+            }
+        });
+    }
     @Override
     public int getItemCount() {
         return appData.size();
-    }
-
-    public ArrayList<SettingHolder> getSettingHolders() {
-        return settingHolders;
     }
 }

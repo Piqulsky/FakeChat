@@ -103,7 +103,10 @@ public class MainActivity extends AppCompatActivity {
         list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received that is definitely much more longer and should be split", R.drawable.avatar));
         list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent", R.drawable.avatar));
         list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent that is definitely much more longer and should be split", R.drawable.avatar));
-        list.get(list.size() - 1).setRead(false);
+        list.get(0).setRead(true);
+        list.get(1).setRead(true);
+        list.get(2).setRead(true);
+        list.get(3).setRead(true);
 
         return list;
     }

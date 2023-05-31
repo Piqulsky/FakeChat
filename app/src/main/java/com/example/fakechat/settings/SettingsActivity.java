@@ -28,7 +28,6 @@ public class SettingsActivity extends AppCompatActivity {
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private SettingsAdapter recyclerAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

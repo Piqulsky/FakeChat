@@ -20,8 +20,7 @@ import java.util.ArrayList;
 public class SettingHolder extends RecyclerView.ViewHolder {
     private EditText editTextReceiver;
     private ImageView imageViewAvatar;
-    private ImageButton imageViewMore;
-    private Switch switchOnline;
+    private EditText editTextActivity;
     private RecyclerView recyclerViewMessages;
     private SettingMessagesAdapter recyclerAdapter;
     private Context context;
@@ -30,26 +29,24 @@ public class SettingHolder extends RecyclerView.ViewHolder {
         context = itemView.getContext();
         editTextReceiver = itemView.findViewById(R.id.editTextSettingReceiver);
         imageViewAvatar = itemView.findViewById(R.id.imageViewSettingAvatar);
-        imageViewMore = itemView.findViewById(R.id.imageViewMore);
-        switchOnline = itemView.findViewById(R.id.switchOnline);
+        editTextActivity = itemView.findViewById(R.id.editTextActivity);
         recyclerViewMessages = itemView.findViewById(R.id.recyclerViewSettingMessages);
     }
-
+    public EditText getEditTextReceiver() {
+        return editTextReceiver;
+    }
     public void setReceiverName(String name){editTextReceiver.setText(name);}
     public void setAvatarResource(int res){imageViewAvatar.setImageResource(res); imageViewAvatar.setTag(res);}
-
-    public void setSwitchOnline(Boolean isOnline) {
-        switchOnline.setChecked(isOnline);
+    public void setSwitchOnline(String activity) {
+        editTextActivity.setText(activity);
     }
-
-    public void setRecyclerViewMessages(ArrayList<MessageData> arrayList) {
-        recyclerAdapter = new SettingMessagesAdapter(arrayList, context, (Integer)imageViewAvatar.getTag());
+    public EditText getEditTextActivity() {
+        return editTextActivity;
+    }
+    public void setRecyclerViewMessages(ArrayList<ChatData> appData, int position) {
+        recyclerAdapter = new SettingMessagesAdapter(appData, position, context, (Integer)imageViewAvatar.getTag());
         recyclerViewMessages.setAdapter(recyclerAdapter);
         recyclerViewMessages.setHasFixedSize(true);
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(context));
-    }
-
-    public ImageButton getImageViewMore() {
-        return imageViewMore;
     }
 }

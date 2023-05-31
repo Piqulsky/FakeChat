@@ -9,7 +9,7 @@ public class MessageData implements Serializable {
     private int viewType;
     private String message;
     private int imageResource;
-    private Boolean isRead = true;
+    private Boolean isRead = false;
     public MessageData(int viewType, String message, int imageResource){
         this.viewType = viewType; this.message = message; this.imageResource = imageResource;
     }
@@ -17,8 +17,14 @@ public class MessageData implements Serializable {
     public int getItemViewType(){
         return viewType;
     }
+    public void setItemViewType(int viewType) {
+        this.viewType = viewType;
+    }
     public String getItemMessage(){
         return message;
+    }
+    public void setItemMessage(String message) {
+        this.message = message;
     }
     public int getItemImageResource(){ return imageResource; }
     public void setRead(Boolean read) {
