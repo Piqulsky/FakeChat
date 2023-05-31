@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fakechat.ChatData;
+import com.example.fakechat.MessageData;
 import com.example.fakechat.R;
 
 import java.util.ArrayList;
@@ -63,6 +64,14 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
             public void afterTextChanged(Editable editable) {
                 appData.get(holder.getAdapterPosition()).setActivity(editable.toString());
             }
+        });
+        holder.getImageButtonDelete().setOnClickListener(view -> {
+            appData.remove(holder.getAdapterPosition());
+            notifyItemRemoved(holder.getAdapterPosition());
+        });
+        holder.getImageButtonAdd().setOnClickListener(view -> {
+            appData.get(holder.getAdapterPosition()).getMessagesData().add(new MessageData(holder.getAvatarResource()));
+            notifyItemChanged(holder.getAdapterPosition());
         });
     }
     @Override

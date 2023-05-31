@@ -2,6 +2,7 @@ package com.example.fakechat.settings;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 public class SettingMessageHolder extends RecyclerView.ViewHolder {
     private EditText editTextMessage;
+    private ImageButton imageButtonDeleteMessage;
     private ImageView imageViewReceived;
     private ImageView imageViewSent;
     private Switch switchWhose;
@@ -23,6 +25,7 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
     public SettingMessageHolder(@NonNull View itemView) {
         super(itemView);
         editTextMessage = itemView.findViewById(R.id.editTextSettingMessage);
+        imageButtonDeleteMessage = itemView.findViewById(R.id.imageButtonDeleteMessage);
         imageViewReceived = itemView.findViewById(R.id.imageViewReceived);
         imageViewSent = itemView.findViewById(R.id.imageViewSent);
         switchRead = itemView.findViewById(R.id.switchRead);
@@ -65,6 +68,10 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
 
     public EditText getEditTextMessage() {
         return editTextMessage;
+    }
+
+    public ImageButton getImageButtonDeleteMessage() {
+        return imageButtonDeleteMessage;
     }
 
     public Switch getSwitchRead() {

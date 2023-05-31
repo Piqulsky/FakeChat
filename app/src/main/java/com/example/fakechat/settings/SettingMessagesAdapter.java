@@ -46,6 +46,10 @@ public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageH
         holder.getEditTextMessage().addTextChangedListener(new MessageTextChangedListener(holder, this.position));
         holder.getSwitchRead().setOnCheckedChangeListener(new ReadOnCheckedChangeListener(holder, this.position));
         holder.getSwitchWhose().setOnCheckedChangeListener(new WhoseOnCheckedChangeListener(holder, this.position));
+        holder.getImageButtonDeleteMessage().setOnClickListener(view -> {
+            appData.get(this.position).getMessagesData().remove(holder.getAdapterPosition());
+            notifyItemRemoved(holder.getAdapterPosition());
+        });
     }
     private class MessageTextChangedListener implements TextWatcher{
         @NonNull SettingMessageHolder holder;

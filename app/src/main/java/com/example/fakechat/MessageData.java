@@ -10,6 +10,9 @@ public class MessageData implements Serializable {
     private String message;
     private int imageResource;
     private Boolean isRead = false;
+    public MessageData(int imageResource){
+        viewType = 0; message = ""; this.imageResource = imageResource;
+    }
     public MessageData(int viewType, String message, int imageResource){
         this.viewType = viewType; this.message = message; this.imageResource = imageResource;
     }

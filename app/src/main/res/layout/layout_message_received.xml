@@ -9,6 +9,7 @@
         android:id="@+id/imageViewSender"
         android:layout_width="50sp"
         android:layout_height="50sp"
+        android:layout_marginBottom="5sp"
         app:srcCompat="@drawable/avatar" />
 
     <TextView

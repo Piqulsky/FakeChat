@@ -5,13 +5,28 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editTextSettingMessage"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Message..."
-        android:inputType="textPersonName" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextSettingMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Message..."
+            android:inputType="textPersonName" />
+
+        <ImageButton
+            android:id="@+id/imageButtonDeleteMessage"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="fitXY"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+    </LinearLayout>
 
     <Switch
         android:id="@+id/switchRead"

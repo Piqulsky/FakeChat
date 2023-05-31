@@ -18,13 +18,13 @@
             android:id="@+id/imageViewSave"
             android:layout_width="75sp"
             android:layout_height="75sp"
-            android:background="?android:attr/selectableItemBackground"
             android:paddingLeft="20sp"
             android:paddingTop="20sp"
             android:paddingRight="20sp"
             android:paddingBottom="20sp"
+            android:background="?android:attr/selectableItemBackground"
             android:scaleType="fitXY"
-            android:src="@android:drawable/ic_menu_save" />
+            app:srcCompat="@android:drawable/ic_menu_save" />
 
         <TextView
             android:id="@+id/textViewSettings"
@@ -58,7 +58,6 @@
             android:ems="10"
             android:hint="Chats name..."
             android:inputType="textPersonName"
-            android:text="Chats"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -88,12 +87,21 @@
             android:ems="10"
             android:hint="#Color code..."
             android:inputType="textPersonName"
-            android:text="#FF9800"
             android:textSize="20sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSettings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <ImageButton
+        android:id="@+id/imageButtonAddChat"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_gravity="right"
+        android:background="#FF9800"
+        android:scaleType="fitXY"
+        app:srcCompat="@android:drawable/stat_notify_more" />
 </LinearLayout>

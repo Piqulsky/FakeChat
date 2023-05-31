@@ -46,12 +46,20 @@ public class SettingsActivity extends AppCompatActivity {
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ImageButton saveButton = findViewById(R.id.imageViewSave);
-        saveButton.setOnClickListener(view -> {
-            EditText editTextChatsName = findViewById(R.id.editTextChatsName);
-            chatsName = editTextChatsName.getText().toString();
+        EditText editTextColorTheme = findViewById(R.id.editTextColorTheme);
+        editTextColorTheme.setText(colorHex);
+        editTextColorTheme.setOnFocusChangeListener((view, b) -> {
+            if(!b){
+                View colorView = findViewById(R.id.colorView);
+                colorView.setBackgroundColor(Color.parseColor(editTextColorTheme.getText().toString()));
+            }
+        });
 
-            EditText editTextColorTheme = findViewById(R.id.editTextColorTheme);
+        ImageButton saveButton = findViewById(R.id.imageViewSave);
+        EditText editTextChatsName = findViewById(R.id.editTextChatsName);
+        editTextChatsName.setText(chatsName);
+        saveButton.setOnClickListener(view -> {
+            chatsName = editTextChatsName.getText().toString();
             colorHex = editTextColorTheme.getText().toString();
 
             Intent chats =  new Intent(this, ChatsActivity.class);
@@ -61,12 +69,10 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(chats);
         });
 
-        EditText editTextColorTheme = findViewById(R.id.editTextColorTheme);
-        editTextColorTheme.setOnFocusChangeListener((view, b) -> {
-            if(!b){
-                View colorView = findViewById(R.id.colorView);
-                colorView.setBackgroundColor(Color.parseColor(editTextColorTheme.getText().toString()));
-            }
+        ImageButton addButton = findViewById(R.id.imageButtonAddChat);
+        addButton.setOnClickListener(view -> {
+            appData.add(new ChatData());
+            recyclerAdapter.notifyItemInserted(appData.size() - 1);
         });
     }
 }
