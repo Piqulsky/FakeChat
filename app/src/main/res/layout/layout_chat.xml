@@ -22,6 +22,7 @@
         android:layout_toEndOf="@id/imageViewAvatar"
         android:paddingStart="8sp"
         android:text="Receiver"
+        android:textColor="#000000"
         android:textSize="24sp" />
 
     <ImageButton

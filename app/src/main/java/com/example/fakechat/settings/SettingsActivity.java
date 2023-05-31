@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.fakechat.ChatData;
+import com.example.fakechat.MessageData;
 import com.example.fakechat.R;
 import com.example.fakechat.chats.ChatsActivity;
 
@@ -54,15 +55,6 @@ public class SettingsActivity extends AppCompatActivity {
             EditText editTextColorTheme = findViewById(R.id.editTextColorTheme);
             colorHex = editTextColorTheme.getText().toString();
 
-            Intent chats =  new Intent(this, ChatsActivity.class);
-            chats.putExtra("AppData", appData);
-            chats.putExtra("ChatsName", chatsName);
-            chats.putExtra("ColorHex", colorHex);
-            startActivity(chats);
-        });
-
-        ImageButton cancelButton = findViewById(R.id.imageViewCancel);
-        cancelButton.setOnClickListener(view -> {
             Intent chats =  new Intent(this, ChatsActivity.class);
             chats.putExtra("AppData", appData);
             chats.putExtra("ChatsName", chatsName);

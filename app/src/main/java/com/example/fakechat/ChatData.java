@@ -7,6 +7,7 @@ public class ChatData implements Serializable {
     private String receiverName;
     private int avatar;
     private Boolean isRead = true;
+    private String activity = "online";
     private ArrayList<MessageData> messagesData;
 
     public ChatData(){
@@ -48,5 +49,11 @@ public class ChatData implements Serializable {
     }
     public void setRead(Boolean read) {
         isRead = read;
+    }
+    public void setActivity(String activity) {
+        this.activity = activity;
+    }
+    public String getActivity() {
+        return activity;
     }
 }

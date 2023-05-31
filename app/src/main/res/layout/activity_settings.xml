@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/textViewSettings"
-            android:layout_width="260sp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="10sp"
             android:paddingTop="15sp"
@@ -36,18 +36,6 @@
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/imageViewCancel"
-            android:layout_width="75sp"
-            android:layout_height="75sp"
-            android:background="?android:attr/selectableItemBackground"
-            android:paddingLeft="20sp"
-            android:paddingTop="20sp"
-            android:paddingRight="20sp"
-            android:paddingBottom="20sp"
-            android:scaleType="fitXY"
-            android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
     </LinearLayout>
 

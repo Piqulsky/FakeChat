@@ -9,10 +9,9 @@
         android:id="@+id/textViewMessageSent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="8sp"
         android:layout_marginEnd="5sp"
-        android:layout_marginBottom="8sp"
         android:background="#FF9800"
         android:maxWidth="250sp"
         android:paddingStart="10sp"
@@ -23,4 +22,14 @@
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/imageViewRead"
+        android:layout_width="15sp"
+        android:layout_height="15sp"
+        android:layout_below="@id/textViewMessageSent"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="3sp"
+        android:layout_marginBottom="5sp"
+        app:srcCompat="@android:drawable/ic_menu_directions" />
 </RelativeLayout>

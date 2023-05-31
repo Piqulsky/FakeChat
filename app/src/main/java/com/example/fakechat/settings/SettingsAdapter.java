@@ -16,14 +16,17 @@ import java.util.ArrayList;
 public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
     private ArrayList<ChatData> appData;
     private Context context;
+    private ArrayList<SettingHolder> settingHolders;
     public SettingsAdapter(ArrayList<ChatData> appData, Context context){
-        this.appData = appData; this.context = context;
+        this.appData = appData; this.context = context; settingHolders = new ArrayList<>();
     }
     @NonNull
     @Override
     public SettingHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_setting, parent, false);
-        return new SettingHolder(view);
+        SettingHolder holder = new SettingHolder(view);
+        settingHolders.add(holder);
+        return holder;
     }
 
     @Override
@@ -46,5 +49,9 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
     @Override
     public int getItemCount() {
         return appData.size();
+    }
+
+    public ArrayList<SettingHolder> getSettingHolders() {
+        return settingHolders;
     }
 }

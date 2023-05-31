@@ -16,8 +16,9 @@ import java.util.ArrayList;
 public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageHolder> {
     private ArrayList<MessageData> list;
     private Context context;
-    public SettingMessagesAdapter(ArrayList<MessageData> list, Context context){
-        this.list = list; this.context = context;
+    private int avatar;
+    public SettingMessagesAdapter(ArrayList<MessageData> list, Context context, int avatar){
+        this.list = list; this.context = context; this.avatar = avatar;
     }
     @NonNull
     @Override
@@ -29,6 +30,8 @@ public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageH
     @Override
     public void onBindViewHolder(@NonNull SettingMessageHolder holder, int position) {
         holder.setEditTextMessage(list.get(position).getItemMessage());
+        holder.setAvatar(avatar);
+        holder.setSwitchRead(list.get(position).getRead());
         if(list.get(position).getItemViewType() == MessageData.LAYOUT_MESSAGE_SENT)
             holder.setSwitchWhose(true);
         else if(list.get(position).getItemViewType() == MessageData.LAYOUT_MESSAGE_RECEIVED)

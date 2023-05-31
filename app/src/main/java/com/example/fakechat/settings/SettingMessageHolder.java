@@ -18,6 +18,8 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
     private ImageView imageViewReceived;
     private ImageView imageViewSent;
     private Switch switchWhose;
+    private Switch switchRead;
+    private int avatar;
 
     private ArrayList<MessageData> recyclerArrayList;
     public SettingMessageHolder(@NonNull View itemView) {
@@ -25,6 +27,7 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
         editTextMessage = itemView.findViewById(R.id.editTextSettingMessage);
         imageViewReceived = itemView.findViewById(R.id.imageViewReceived);
         imageViewSent = itemView.findViewById(R.id.imageViewSent);
+        switchRead = itemView.findViewById(R.id.switchRead);
         switchWhose = itemView.findViewById(R.id.switchWhoseMessage);
         switchWhose.setOnCheckedChangeListener((compoundButton, b) -> {
             if(b){
@@ -54,10 +57,11 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
         }
     }
 
-    public MessageData getMessageData(){
-        if(switchWhose.isChecked())
-            return new MessageData(MessageData.LAYOUT_MESSAGE_SENT, editTextMessage.getText().toString());
-        else
-            return new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, editTextMessage.getText().toString());
+    public void setSwitchRead(Boolean read) {
+        switchRead.setChecked(read);
+    }
+
+    public void setAvatar(int avatar) {
+        this.avatar = avatar;
     }
 }

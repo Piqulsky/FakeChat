@@ -24,7 +24,6 @@ public class SettingHolder extends RecyclerView.ViewHolder {
     private Switch switchOnline;
     private RecyclerView recyclerViewMessages;
     private SettingMessagesAdapter recyclerAdapter;
-    private ArrayList<MessageData> recyclerArrayList;
     private Context context;
     public SettingHolder(@NonNull View itemView) {
         super(itemView);
@@ -44,8 +43,7 @@ public class SettingHolder extends RecyclerView.ViewHolder {
     }
 
     public void setRecyclerViewMessages(ArrayList<MessageData> arrayList) {
-        recyclerArrayList = arrayList;
-        recyclerAdapter = new SettingMessagesAdapter(recyclerArrayList, context);
+        recyclerAdapter = new SettingMessagesAdapter(arrayList, context, (Integer)imageViewAvatar.getTag());
         recyclerViewMessages.setAdapter(recyclerAdapter);
         recyclerViewMessages.setHasFixedSize(true);
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(context));
@@ -53,18 +51,5 @@ public class SettingHolder extends RecyclerView.ViewHolder {
 
     public ImageButton getImageViewMore() {
         return imageViewMore;
-    }
-
-    public ArrayList<MessageData> getRecyclerArrayList() {
-        return recyclerArrayList;
-    }
-
-    public ChatData getChatData(){
-        ArrayList<MessageData> list = new ArrayList<MessageData>();
-        for(int i = 0; i < recyclerArrayList.size(); i++){
-            list.add(((SettingMessageHolder) recyclerViewMessages.findViewHolderForAdapterPosition(i)).getMessageData());
-        }
-        ChatData chat = new ChatData(editTextReceiver.getText().toString(), (Integer)imageViewAvatar.getTag(), list);
-        return chat;
     }
 }

@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -41,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
             appData = new ArrayList<>();
             appData.add(new ChatData("Receiver1", R.drawable.avatar, createDataArray()));
             appData.add(new ChatData("Receiver2", R.drawable.avatar, new ArrayList<>()));
+            appData.get(1).setActivity("15m ago");
             appData.add(new ChatData());
+            appData.get(2).setRead(false);
             appData.add(new ChatData());
             appData.add(new ChatData());
 
@@ -51,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
         }
         TextView textViewReceiverName = findViewById(R.id.textViewReceiver);
         textViewReceiverName.setText(appData.get(receiver).getReceiverName());
+
+        TextView textViewActivity = findViewById(R.id.textViewActivity);
+        textViewActivity.setText(appData.get(receiver).getActivity());
+        if(appData.get(receiver).getActivity().equals("online"))
+            textViewActivity.setTextColor(Color.GREEN);
+        appData.get(receiver).setRead(true);
+
+        ImageView imageViewAvatar = findViewById(R.id.imageViewReceiver);
+        imageViewAvatar.setImageResource(appData.get(receiver).getAvatar());
 
         LinearLayout linearLayoutHeader = findViewById(R.id.linearLayoutMainHeader);
         linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));
@@ -69,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setOnClickListener(view -> {
             EditText editTextMessage = findViewById(R.id.editTextMessage);
             if(!editTextMessage.getText().toString().equals(""))
-                MainActivity.this.addToRecyclerData(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, editTextMessage.getText().toString()));
+                MainActivity.this.addToRecyclerData(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, editTextMessage.getText().toString(), appData.get(receiver).getAvatar()));
             editTextMessage.setText("");
         });
 
@@ -87,10 +99,11 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<MessageData> list = new ArrayList<>();
 
         list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received", R.drawable.avatar));
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent"));
+        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent", R.drawable.avatar));
         list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received that is definitely much more longer and should be split", R.drawable.avatar));
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent"));
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent that is definitely much more longer and should be split"));
+        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent", R.drawable.avatar));
+        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent that is definitely much more longer and should be split", R.drawable.avatar));
+        list.get(list.size() - 1).setRead(false);
 
         return list;
     }

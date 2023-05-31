@@ -22,6 +22,9 @@ public class ChatHolder extends RecyclerView.ViewHolder {
     }
 
     public void setReceiverName(String name){textViewReceiver.setText(name);}
+    public TextView getTextViewReceiver() {
+        return textViewReceiver;
+    }
     public void setAvatarResource(int res){imageViewAvatar.setImageResource(res);}
     public void setButtonResource(int res){imageViewButton.setImageResource(res);}
     public ImageButton getImageButton() {

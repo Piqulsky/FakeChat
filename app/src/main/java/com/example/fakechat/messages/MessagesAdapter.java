@@ -60,6 +60,10 @@ public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case LAYOUT_MESSAGE_SENT:
                 ((SentMessageHolder) holder).setMessage(list.get(position).getItemMessage());
                 ((SentMessageHolder) holder).setColor(colorHex);
+                if(list.get(position).getRead())
+                    ((SentMessageHolder) holder).setImageViewRead(list.get(position).getItemImageResource());
+                else
+                    ((SentMessageHolder) holder).setImageViewRead(MessageData.MESSAGE_UNREAD_RESOURCE);
                 break;
             default:
                 break;
