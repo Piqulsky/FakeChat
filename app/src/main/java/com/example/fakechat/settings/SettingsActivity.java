@@ -1,22 +1,22 @@
 package com.example.fakechat.settings;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.fakechat.ChatData;
-import com.example.fakechat.MessageData;
 import com.example.fakechat.R;
 import com.example.fakechat.chats.ChatsActivity;
 
@@ -74,5 +74,9 @@ public class SettingsActivity extends AppCompatActivity {
             appData.add(new ChatData());
             recyclerAdapter.notifyItemInserted(appData.size() - 1);
         });
+
+
     }
+
+
 }

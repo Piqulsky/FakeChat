@@ -3,6 +3,7 @@ package com.example.fakechat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -34,7 +35,7 @@ public class CallActivity extends AppCompatActivity {
         textViewReceiverName.setText(appData.get(receiver).getReceiverName());
 
         ImageView imageViewAvatar = findViewById(R.id.imageViewCallAvatar);
-        imageViewAvatar.setImageResource(appData.get(receiver).getAvatar());
+        imageViewAvatar.setImageURI(Uri.parse(appData.get(receiver).getAvatar()));
 
         ImageButton endButton = findViewById(R.id.imageButtonEnd);
         endButton.setOnClickListener(view -> {

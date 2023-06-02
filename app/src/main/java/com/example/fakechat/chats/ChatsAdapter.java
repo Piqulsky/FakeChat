@@ -3,6 +3,7 @@ package com.example.fakechat.chats;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
     @Override
     public void onBindViewHolder(@NonNull ChatHolder holder, int position) {
         holder.setReceiverName(appData.get(position).getReceiverName());
-        holder.setAvatarResource(appData.get(position).getAvatar());
+        holder.setAvatarResource(Uri.parse(appData.get(position).getAvatar()));
         if(!appData.get(position).getRead())
             holder.getTextViewReceiver().setTypeface(null, Typeface.BOLD);
         holder.getImageButton().setOnClickListener(view -> {

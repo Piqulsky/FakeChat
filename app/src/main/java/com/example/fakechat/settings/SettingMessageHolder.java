@@ -21,7 +21,7 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
     private ImageView imageViewSent;
     private Switch switchWhose;
     private Switch switchRead;
-    private int avatar;
+
     public SettingMessageHolder(@NonNull View itemView) {
         super(itemView);
         editTextMessage = itemView.findViewById(R.id.editTextSettingMessage);
@@ -60,10 +60,6 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
 
     public void setSwitchRead(Boolean read) {
         switchRead.setChecked(read);
-    }
-
-    public void setAvatar(int avatar) {
-        this.avatar = avatar;
     }
 
     public EditText getEditTextMessage() {

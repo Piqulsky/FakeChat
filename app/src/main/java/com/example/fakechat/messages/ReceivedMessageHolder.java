@@ -1,5 +1,6 @@
 package com.example.fakechat.messages;
 
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +23,7 @@ public class ReceivedMessageHolder extends RecyclerView.ViewHolder {
     public void setMessage(String message) {
         textViewMessage.setText(message);
     }
-    public void setImage(int imageResource) {
-        imageViewSender.setImageResource(imageResource);
+    public void setImage(String imageResource) {
+        imageViewSender.setImageURI(Uri.parse(imageResource));
     }
 }

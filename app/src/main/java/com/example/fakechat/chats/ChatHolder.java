@@ -1,5 +1,6 @@
 package com.example.fakechat.chats;
 
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -25,7 +26,7 @@ public class ChatHolder extends RecyclerView.ViewHolder {
     public TextView getTextViewReceiver() {
         return textViewReceiver;
     }
-    public void setAvatarResource(int res){imageViewAvatar.setImageResource(res);}
+    public void setAvatarResource(Uri res){imageViewAvatar.setImageURI(res);}
     public ImageButton getImageButton() {
         return imageViewButton;
     }

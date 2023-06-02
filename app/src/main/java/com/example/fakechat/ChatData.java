@@ -5,26 +5,20 @@ import java.util.ArrayList;
 
 public class ChatData implements Serializable {
     private String receiverName;
-    private int avatar;
+    private String avatar;
     private Boolean isRead = true;
     private String activity = "online";
     private ArrayList<MessageData> messagesData;
 
     public ChatData(){
         receiverName = "EmptyName";
-        avatar = R.drawable.avatar;
+        avatar = "android.resource://com.example.fakechat/drawable/avatar";
         messagesData = new ArrayList<>();
     }
-    public ChatData(String receiverName, int avatar, ArrayList<MessageData> messagesData){
+    public ChatData(String receiverName, String avatar, ArrayList<MessageData> messagesData){
         this.receiverName = receiverName;
         this.avatar = avatar;
         this.messagesData = messagesData;
-    }
-    public ChatData(String receiverName, int avatar, ArrayList<MessageData> messagesData, Boolean isRead){
-        this.receiverName = receiverName;
-        this.avatar = avatar;
-        this.messagesData = messagesData;
-        this.isRead = isRead;
     }
     public String getReceiverName() {
         return receiverName;
@@ -32,10 +26,10 @@ public class ChatData implements Serializable {
     public void setReceiverName(String receiverName) {
         this.receiverName = receiverName;
     }
-    public int getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
-    public void setAvatar(int avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
     public ArrayList<MessageData> getMessagesData() {

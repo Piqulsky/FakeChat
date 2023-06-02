@@ -40,12 +40,6 @@ public class ChatsActivity extends AppCompatActivity {
         textViewChats.setText(chatsName);
 
         recyclerView = findViewById(R.id.recyclerViewChats);
-        ArrayList<String> chatNames = new ArrayList<>();
-        ArrayList<Integer> chatAvatars = new ArrayList<>();
-        appData.forEach((ChatData chat) -> {
-            chatNames.add(chat.getReceiverName());
-            chatAvatars.add(chat.getAvatar());
-        });
         recyclerAdapter = new ChatsAdapter(appData, this, chatsName, colorHex);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

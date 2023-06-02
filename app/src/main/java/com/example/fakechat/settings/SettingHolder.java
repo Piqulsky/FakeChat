@@ -1,6 +1,7 @@
 package com.example.fakechat.settings;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -25,6 +26,7 @@ public class SettingHolder extends RecyclerView.ViewHolder {
     private RecyclerView recyclerViewMessages;
     private SettingMessagesAdapter recyclerAdapter;
     private ImageButton imageButtonAdd;
+    private Switch switchIsRead;
     private Context context;
     public SettingHolder(@NonNull View itemView) {
         super(itemView);
@@ -35,13 +37,13 @@ public class SettingHolder extends RecyclerView.ViewHolder {
         editTextActivity = itemView.findViewById(R.id.editTextActivity);
         recyclerViewMessages = itemView.findViewById(R.id.recyclerViewSettingMessages);
         imageButtonAdd = itemView.findViewById(R.id.imageButtonAddMessage);
+        switchIsRead = itemView.findViewById(R.id.switchIsRead);
     }
     public EditText getEditTextReceiver() {
         return editTextReceiver;
     }
     public void setReceiverName(String name){ editTextReceiver.setText(name); }
-    public void setAvatarResource(int res){ imageViewAvatar.setImageResource(res); imageViewAvatar.setTag(res); }
-    public int getAvatarResource(){ return (Integer)imageViewAvatar.getTag(); }
+    public void setAvatarResource(String res){ imageViewAvatar.setImageURI(Uri.parse(res)); imageViewAvatar.setTag(res); }
     public void setSwitchOnline(String activity) {
         editTextActivity.setText(activity);
     }
@@ -51,13 +53,11 @@ public class SettingHolder extends RecyclerView.ViewHolder {
     public ImageButton getImageButtonDelete() {
         return imageButtonDelete;
     }
-
     public ImageButton getImageButtonAdd() {
         return imageButtonAdd;
     }
-
     public void setRecyclerViewMessages(ArrayList<ChatData> appData, int position) {
-        recyclerAdapter = new SettingMessagesAdapter(appData, position, context, (Integer)imageViewAvatar.getTag());
+        recyclerAdapter = new SettingMessagesAdapter(appData, position, context);
         recyclerViewMessages.setAdapter(recyclerAdapter);
         recyclerViewMessages.setHasFixedSize(true);
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(context));

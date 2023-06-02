@@ -6,7 +6,11 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
+import androidx.activity.ComponentActivity;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -70,7 +74,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
             notifyItemRemoved(holder.getAdapterPosition());
         });
         holder.getImageButtonAdd().setOnClickListener(view -> {
-            appData.get(holder.getAdapterPosition()).getMessagesData().add(new MessageData(holder.getAvatarResource()));
+            appData.get(holder.getAdapterPosition()).getMessagesData().add(new MessageData());
             notifyItemChanged(holder.getAdapterPosition());
         });
     }

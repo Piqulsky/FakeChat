@@ -11,21 +11,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fakechat.ChatData;
 import com.example.fakechat.MessageData;
 import com.example.fakechat.R;
 
 import java.util.ArrayList;
 
 public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<MessageData> list;
+    private ArrayList<ChatData> appData;
+    private int position;
     private String colorHex;
     private Context context;
-    public MessagesAdapter(ArrayList<MessageData> list, Context context, String colorHex){
-        this.list = list; this.context = context; this.colorHex = colorHex;
+    public MessagesAdapter(ArrayList<ChatData> appData, Context context, String colorHex, int position){
+        this.appData = appData; this.context = context; this.colorHex = colorHex; this.position = position;
     }
     @Override
     public int getItemViewType(int position) {
-        switch (list.get(position).getItemViewType()){
+        switch (appData.get(this.position).getMessagesData().get(position).getItemViewType()){
             case 0:
                 return LAYOUT_MESSAGE_RECEIVED;
             case 1:
@@ -52,18 +54,19 @@ public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        ArrayList<MessageData> list = appData.get(this.position).getMessagesData();
         switch (list.get(position).getItemViewType()){
             case LAYOUT_MESSAGE_RECEIVED:
                 ((ReceivedMessageHolder) holder).setMessage(list.get(position).getItemMessage());
-                ((ReceivedMessageHolder) holder).setImage(list.get(position).getItemImageResource());
+                ((ReceivedMessageHolder) holder).setImage(appData.get(this.position).getAvatar());
                 break;
             case LAYOUT_MESSAGE_SENT:
                 ((SentMessageHolder) holder).setMessage(list.get(position).getItemMessage());
                 ((SentMessageHolder) holder).setColor(colorHex);
                 if(list.get(position).getRead())
-                    ((SentMessageHolder) holder).setImageViewRead(list.get(position).getItemImageResource());
+                    ((SentMessageHolder) holder).setImageViewRead(appData.get(this.position).getAvatar());
                 else
-                    ((SentMessageHolder) holder).setImageViewRead(MessageData.MESSAGE_UNREAD_RESOURCE);
+                    ((SentMessageHolder) holder).setImageViewRead(MainActivity.getUriToDrawable(context, R.drawable.sent_checkmark).toString());
                 break;
             default:
                 break;
@@ -72,6 +75,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return appData.get(this.position).getMessagesData().size();
     }
 }
