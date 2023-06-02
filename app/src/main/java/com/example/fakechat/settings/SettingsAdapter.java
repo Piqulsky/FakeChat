@@ -6,11 +6,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.CompoundButton;
 
-import androidx.activity.ComponentActivity;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,8 +36,12 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
     public void onBindViewHolder(@NonNull SettingHolder holder, int position) {
         holder.setReceiverName(appData.get(position).getReceiverName());
         holder.setAvatarResource(appData.get(position).getAvatar());
-        holder.setSwitchOnline(appData.get(position).getActivity());
+        holder.setEditTextActivity(appData.get(position).getActivity());
+        holder.getSwitchIsRead().setChecked(appData.get(position).getRead());
         holder.setRecyclerViewMessages(appData, position);
+        holder.getSwitchIsRead().setOnCheckedChangeListener((compoundButton, b) -> {
+            appData.get(holder.getAdapterPosition()).setRead(b);
+        });
         holder.getEditTextReceiver().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

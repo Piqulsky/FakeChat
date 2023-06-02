@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fakechat.ChatData;
 import com.example.fakechat.R;
-import com.example.fakechat.MessageData;
 
 import java.util.ArrayList;
 
@@ -44,11 +43,14 @@ public class SettingHolder extends RecyclerView.ViewHolder {
     }
     public void setReceiverName(String name){ editTextReceiver.setText(name); }
     public void setAvatarResource(String res){ imageViewAvatar.setImageURI(Uri.parse(res)); imageViewAvatar.setTag(res); }
-    public void setSwitchOnline(String activity) {
+    public void setEditTextActivity(String activity) {
         editTextActivity.setText(activity);
     }
     public EditText getEditTextActivity() {
         return editTextActivity;
+    }
+    public Switch getSwitchIsRead() {
+        return switchIsRead;
     }
     public ImageButton getImageButtonDelete() {
         return imageButtonDelete;
