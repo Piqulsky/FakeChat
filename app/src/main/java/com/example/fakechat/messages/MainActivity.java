@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fakechat.CallActivity;
 import com.example.fakechat.ChatData;
@@ -113,7 +114,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         imageViewAvatar.setOnClickListener(view -> {
-            getImage.launch("image/*");
+            try {
+                getImage.launch("image/*");
+            } catch (Exception e){
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
         });
     }
 
@@ -138,9 +143,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.scrollToPosition(recyclerAdapter.getItemCount() - 1);
     }
     ActivityResultLauncher<String> getImage = registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
-        ((ImageView) findViewById(R.id.imageViewReceiver)).setImageURI(uri);
-        appData.get(receiver).setAvatar(uri.toString());
-        recyclerAdapter.notifyDataSetChanged();
+        try {
+            ((ImageView) findViewById(R.id.imageViewReceiver)).setImageURI(uri);
+            appData.get(receiver).setAvatar(uri.toString());
+            recyclerAdapter.notifyDataSetChanged();
+        } catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     });
     /**
      * From stack user ceph3us - issue: https://stackoverflow.com/questions/6602417/get-the-uri-of-an-image-stored-in-drawable

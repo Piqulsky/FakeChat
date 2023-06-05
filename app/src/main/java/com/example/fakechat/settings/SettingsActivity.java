@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.fakechat.ChatData;
 import com.example.fakechat.R;
@@ -28,6 +29,7 @@ public class SettingsActivity extends AppCompatActivity {
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private SettingsAdapter recyclerAdapter;
+    private Boolean dataCorrect = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,13 @@ public class SettingsActivity extends AppCompatActivity {
         editTextColorTheme.setOnFocusChangeListener((view, b) -> {
             if(!b){
                 View colorView = findViewById(R.id.colorView);
-                colorView.setBackgroundColor(Color.parseColor(editTextColorTheme.getText().toString()));
+                try{
+                    colorView.setBackgroundColor(Color.parseColor(editTextColorTheme.getText().toString()));
+                    dataCorrect = true;
+                } catch (Exception e){
+                    Toast.makeText(this, "Input correct hexadecimal RGB color code with #", Toast.LENGTH_LONG).show();
+                    dataCorrect = false;
+                }
             }
         });
 
@@ -59,14 +67,16 @@ public class SettingsActivity extends AppCompatActivity {
         EditText editTextChatsName = findViewById(R.id.editTextChatsName);
         editTextChatsName.setText(chatsName);
         saveButton.setOnClickListener(view -> {
-            chatsName = editTextChatsName.getText().toString();
-            colorHex = editTextColorTheme.getText().toString();
+            if(dataCorrect){
+                chatsName = editTextChatsName.getText().toString();
+                colorHex = editTextColorTheme.getText().toString();
 
-            Intent chats =  new Intent(this, ChatsActivity.class);
-            chats.putExtra("AppData", appData);
-            chats.putExtra("ChatsName", chatsName);
-            chats.putExtra("ColorHex", colorHex);
-            startActivity(chats);
+                Intent chats =  new Intent(this, ChatsActivity.class);
+                chats.putExtra("AppData", appData);
+                chats.putExtra("ChatsName", chatsName);
+                chats.putExtra("ColorHex", colorHex);
+                startActivity(chats);
+            }
         });
 
         ImageButton addButton = findViewById(R.id.imageButtonAddChat);

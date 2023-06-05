@@ -112,6 +112,7 @@
             android:paddingStart="7sp"
             android:paddingTop="5sp"
             android:paddingBottom="5sp"
+            android:textColor="#000000"
             android:textSize="24sp" />
 
         <ImageButton
