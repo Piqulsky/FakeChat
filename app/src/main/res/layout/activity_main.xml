@@ -31,8 +31,9 @@
             app:srcCompat="@drawable/avatar" />
 
         <LinearLayout
-            android:layout_width="230sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
@@ -100,9 +101,10 @@
 
         <EditText
             android:id="@+id/editTextMessage"
-            android:layout_width="275sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
+            android:layout_weight="1"
             android:background="#FFFFFF"
             android:ems="10"
             android:hint="Message..."
