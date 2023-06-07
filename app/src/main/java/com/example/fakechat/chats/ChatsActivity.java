@@ -29,7 +29,7 @@ public class ChatsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chats);
 
         Bundle extras = getIntent().getExtras();
-        appData = extras.getParcelableArrayList("AppData", ChatData.class);
+        appData = (ArrayList<ChatData>) extras.get("AppData");
         chatsName = extras.getString("ChatsName");
         colorHex = extras.getString("ColorHex");
 

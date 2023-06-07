@@ -36,9 +36,12 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         Bundle extras = getIntent().getExtras();
-        appData = extras.getParcelableArrayList("AppData", ChatData.class);
+        appData = (ArrayList<ChatData>) extras.get("AppData");
         chatsName = extras.getString("ChatsName");
         colorHex = extras.getString("ColorHex");
+
+        View color = findViewById(R.id.colorView);
+        color.setBackgroundColor(Color.parseColor(colorHex));
 
         LinearLayout linearLayoutHeader = findViewById(R.id.linearLayoutSettingsHeader);
         linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));

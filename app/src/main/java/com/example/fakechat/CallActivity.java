@@ -26,7 +26,7 @@ public class CallActivity extends AppCompatActivity {
         setContentView(R.layout.activity_call);
 
         Bundle extras = getIntent().getExtras();
-        appData = extras.getParcelableArrayList("AppData", ChatData.class);
+        appData = (ArrayList<ChatData>) extras.get("AppData");
         receiver = extras.getInt("ReceiverIndex");
         chatsName = extras.getString("ChatsName");
         colorHex = extras.getString("ColorHex");
