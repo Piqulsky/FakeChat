@@ -7,11 +7,13 @@
     <ImageView
         android:id="@+id/imageViewAvatar"
         android:layout_width="80sp"
-        android:layout_height="wrap_content"
+        android:layout_height="80sp"
+        android:cropToPadding="true"
         android:paddingLeft="10sp"
         android:paddingTop="10sp"
         android:paddingRight="10sp"
-        android:paddingBottom="10sp" />
+        android:paddingBottom="10sp"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/textViewChatReceiver"
