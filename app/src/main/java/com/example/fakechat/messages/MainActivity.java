@@ -49,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
             colorHex = extras.getString("ColorHex");
         }catch (Exception e){
             appData = new ArrayList<>();
-            appData.add(new ChatData("Stefan", getUriToDrawable(this, R.drawable.avatar).toString(), createDataArray()));
-            appData.add(new ChatData("Felix", getUriToDrawable(this, R.drawable.niles).toString(), new ArrayList<>()));
+            appData.add(new ChatData("Sergiusz", getUriToDrawable(this, R.drawable.avatar12).toString(), createDataArray()));
+            appData.add(new ChatData("Igor", getUriToDrawable(this, R.drawable.avatar11).toString(), new ArrayList<>()));
             appData.get(1).setActivity("15m ago");
-            appData.add(new ChatData());
+            appData.add(new ChatData("Kaś", getUriToDrawable(this, R.drawable.avatar9).toString(), new ArrayList<>()));
             appData.get(2).setRead(false);
-            appData.add(new ChatData());
+            appData.add(new ChatData("Bernard", getUriToDrawable(this, R.drawable.avatar10).toString(), new ArrayList<>()));
             appData.add(new ChatData());
 
             receiver = 0;

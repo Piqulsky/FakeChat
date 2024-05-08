@@ -11,8 +11,7 @@
         android:paddingLeft="10sp"
         android:paddingTop="10sp"
         android:paddingRight="10sp"
-        android:paddingBottom="10sp"
-        app:srcCompat="@drawable/avatar" />
+        android:paddingBottom="10sp" />
 
     <TextView
         android:id="@+id/textViewChatReceiver"

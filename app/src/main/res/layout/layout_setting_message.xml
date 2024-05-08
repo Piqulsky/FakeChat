@@ -15,9 +15,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/message_bubble_received"
             android:ems="10"
             android:hint="Message..."
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:paddingStart="15dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
         <ImageButton
             android:id="@+id/imageButtonDeleteMessage"
@@ -59,5 +64,9 @@
             android:rotationY="180"
             app:srcCompat="@android:drawable/ic_menu_send" />
     </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
 
 </LinearLayout>

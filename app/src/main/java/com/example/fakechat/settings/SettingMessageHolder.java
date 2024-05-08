@@ -1,5 +1,6 @@
 package com.example.fakechat.settings;
 
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -7,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.Switch;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fakechat.R;
 import com.example.fakechat.MessageData;
+import com.example.fakechat.messages.MainActivity;
 
 import java.util.ArrayList;
 
@@ -32,10 +35,12 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
         switchWhose = itemView.findViewById(R.id.switchWhoseMessage);
         switchWhose.setOnCheckedChangeListener((compoundButton, b) -> {
             if(b){
+                editTextMessage.setBackgroundResource(R.drawable.message_bubble_sent);
                 imageViewSent.setVisibility(View.VISIBLE);
                 imageViewReceived.setVisibility(View.INVISIBLE);
             }
             else {
+                editTextMessage.setBackgroundResource(R.drawable.message_bubble_received);
                 imageViewSent.setVisibility(View.INVISIBLE);
                 imageViewReceived.setVisibility(View.VISIBLE);
             }
@@ -49,10 +54,12 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
     public void setSwitchWhose(Boolean whose) {
         switchWhose.setChecked(whose);
         if(whose){
+            editTextMessage.setBackgroundResource(R.drawable.message_bubble_sent);
             imageViewSent.setVisibility(View.VISIBLE);
             imageViewReceived.setVisibility(View.INVISIBLE);
         }
         else {
+            editTextMessage.setBackgroundResource(R.drawable.message_bubble_received);
             imageViewSent.setVisibility(View.INVISIBLE);
             imageViewReceived.setVisibility(View.VISIBLE);
         }

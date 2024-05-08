@@ -9,8 +9,7 @@
         android:id="@+id/imageViewSender"
         android:layout_width="50sp"
         android:layout_height="50sp"
-        android:layout_marginBottom="5sp"
-        app:srcCompat="@drawable/avatar" />
+        android:layout_marginBottom="5sp" />
 
     <TextView
         android:id="@+id/textViewMessageReceived"
@@ -19,7 +18,7 @@
         android:layout_marginStart="55sp"
         android:layout_marginTop="8sp"
         android:layout_marginBottom="8sp"
-        android:background="#434343"
+        android:background="@drawable/message_bubble_received"
         android:maxWidth="250sp"
         android:paddingStart="10sp"
         android:paddingTop="5sp"

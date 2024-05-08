@@ -14,8 +14,7 @@
         <ImageView
             android:id="@+id/imageViewSettingAvatar"
             android:layout_width="75sp"
-            android:layout_height="75sp"
-            app:srcCompat="@drawable/avatar" />
+            android:layout_height="75sp" />
 
         <EditText
             android:id="@+id/editTextSettingReceiver"
