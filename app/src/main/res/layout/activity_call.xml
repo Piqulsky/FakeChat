@@ -54,7 +54,7 @@
         android:paddingEnd="25sp"
         android:paddingBottom="25sp"
         android:scaleType="fitXY"
-        android:src="@android:drawable/stat_sys_phone_call"
+        android:src="@drawable/end_call"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewCallText" />
