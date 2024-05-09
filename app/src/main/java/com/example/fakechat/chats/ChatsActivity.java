@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.fakechat.ChatData;
+import com.example.fakechat.ColorPalette;
 import com.example.fakechat.R;
 import com.example.fakechat.settings.SettingsActivity;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 
 public class ChatsActivity extends AppCompatActivity {
     private String chatsName;
-    private String colorHex;
+    private String colorName;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private ChatsAdapter recyclerAdapter;
@@ -31,16 +32,16 @@ public class ChatsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         appData = (ArrayList<ChatData>) extras.get("AppData");
         chatsName = extras.getString("ChatsName");
-        colorHex = extras.getString("ColorHex");
+        colorName = extras.getString("ColorName");
 
         LinearLayout linearLayoutHeader = findViewById(R.id.linearLayoutChatsHeader);
-        linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));
+        linearLayoutHeader.setBackgroundColor(Color.parseColor(ColorPalette.colors.get(colorName)));
 
         TextView textViewChats = findViewById(R.id.textViewChats);
         textViewChats.setText(chatsName);
 
         recyclerView = findViewById(R.id.recyclerViewChats);
-        recyclerAdapter = new ChatsAdapter(appData, this, chatsName, colorHex);
+        recyclerAdapter = new ChatsAdapter(appData, this, chatsName, colorName);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -49,7 +50,7 @@ public class ChatsActivity extends AppCompatActivity {
             Intent settings =  new Intent(this, SettingsActivity.class);
             settings.putExtra("AppData", appData);
             settings.putExtra("ChatsName", chatsName);
-            settings.putExtra("ColorHex", colorHex);
+            settings.putExtra("ColorName", colorName);
             startActivity(settings);
         });
     }

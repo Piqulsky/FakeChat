@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class CallActivity extends AppCompatActivity {
     private int receiver;
     private String chatsName;
-    private String colorHex;
+    private String colorName;
     private ArrayList<ChatData> appData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class CallActivity extends AppCompatActivity {
         appData = (ArrayList<ChatData>) extras.get("AppData");
         receiver = extras.getInt("ReceiverIndex");
         chatsName = extras.getString("ChatsName");
-        colorHex = extras.getString("ColorHex");
+        colorName = extras.getString("ColorName");
 
         TextView textViewReceiverName = findViewById(R.id.textViewCallName);
         textViewReceiverName.setText(appData.get(receiver).getReceiverName());
@@ -42,7 +42,7 @@ public class CallActivity extends AppCompatActivity {
             Intent chat =  new Intent(this, MainActivity.class);
             chat.putExtra("AppData", appData);
             chat.putExtra("ChatsName", chatsName);
-            chat.putExtra("ColorHex", colorHex);
+            chat.putExtra("ColorName", colorName);
             chat.putExtra("ReceiverIndex", receiver);
             startActivity(chat);
         });

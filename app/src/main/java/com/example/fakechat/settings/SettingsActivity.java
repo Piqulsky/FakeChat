@@ -12,12 +12,16 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.fakechat.ChatData;
+import com.example.fakechat.ColorPalette;
 import com.example.fakechat.R;
 import com.example.fakechat.chats.ChatsActivity;
 
@@ -25,7 +29,7 @@ import java.util.ArrayList;
 
 public class SettingsActivity extends AppCompatActivity {
     private String chatsName;
-    private String colorHex;
+    private String colorName;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private SettingsAdapter recyclerAdapter;
@@ -38,31 +42,35 @@ public class SettingsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         appData = (ArrayList<ChatData>) extras.get("AppData");
         chatsName = extras.getString("ChatsName");
-        colorHex = extras.getString("ColorHex");
+        colorName = extras.getString("ColorName");
 
         View color = findViewById(R.id.colorView);
-        color.setBackgroundColor(Color.parseColor(colorHex));
+        color.setBackgroundColor(Color.parseColor(ColorPalette.colors.get(colorName)));
 
         LinearLayout linearLayoutHeader = findViewById(R.id.linearLayoutSettingsHeader);
-        linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));
+        linearLayoutHeader.setBackgroundColor(Color.parseColor(ColorPalette.colors.get(colorName)));
 
         recyclerView = findViewById(R.id.recyclerViewSettings);
         recyclerAdapter = new SettingsAdapter(appData, this);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        EditText editTextColorTheme = findViewById(R.id.editTextColorTheme);
-        editTextColorTheme.setText(colorHex);
-        editTextColorTheme.setOnFocusChangeListener((view, b) -> {
-            if(!b){
+        Spinner colorSpinner = findViewById(R.id.colorSpinner);
+        String[] keys = ColorPalette.colors.keySet().toArray(new String[0]);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, keys);
+        colorSpinner.setAdapter(adapter);
+
+        colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
                 View colorView = findViewById(R.id.colorView);
-                try{
-                    colorView.setBackgroundColor(Color.parseColor(editTextColorTheme.getText().toString()));
-                    dataCorrect = true;
-                } catch (Exception e){
-                    Toast.makeText(this, "Input correct hexadecimal RGB color code with #", Toast.LENGTH_LONG).show();
-                    dataCorrect = false;
-                }
+                String color = ColorPalette.colors.get(adapterView.getItemAtPosition(pos).toString());
+                colorView.setBackgroundColor(Color.parseColor(color));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
@@ -72,12 +80,14 @@ public class SettingsActivity extends AppCompatActivity {
         saveButton.setOnClickListener(view -> {
             if(dataCorrect){
                 chatsName = editTextChatsName.getText().toString();
-                colorHex = editTextColorTheme.getText().toString();
+
+                Spinner spinner = findViewById(R.id.colorSpinner);
+                colorName = spinner.getSelectedItem().toString();
 
                 Intent chats =  new Intent(this, ChatsActivity.class);
                 chats.putExtra("AppData", appData);
                 chats.putExtra("ChatsName", chatsName);
-                chats.putExtra("ColorHex", colorHex);
+                chats.putExtra("ColorName", colorName);
                 startActivity(chats);
             }
         });

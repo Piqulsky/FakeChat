@@ -20,10 +20,10 @@ import java.util.ArrayList;
 public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
     private ArrayList<ChatData> appData;
     private String chatsName;
-    private String colorHex;
+    private String colorName;
     private Context context;
-    public ChatsAdapter(ArrayList<ChatData> appData,Context context, String chatsName, String colorHex){
-        this.appData = appData; this.context = context; this.chatsName = chatsName; this.colorHex = colorHex;
+    public ChatsAdapter(ArrayList<ChatData> appData,Context context, String chatsName, String colorName){
+        this.appData = appData; this.context = context; this.chatsName = chatsName; this.colorName = colorName;
     }
     @NonNull
     @Override
@@ -43,7 +43,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
             chat.putExtra("AppData", appData);
             chat.putExtra("ReceiverIndex", position);
             chat.putExtra("ChatsName", chatsName);
-            chat.putExtra("ColorHex", colorHex);
+            chat.putExtra("ColorName", colorName);
             context.startActivity(chat);
         });
     }

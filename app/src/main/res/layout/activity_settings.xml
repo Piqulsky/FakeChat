@@ -59,6 +59,7 @@
             android:hint="Chats name..."
             android:inputType="textPersonName"
             android:textSize="20sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -80,14 +81,13 @@
             android:layout_marginTop="10sp"
             android:background="#FF9800" />
 
-        <EditText
-            android:id="@+id/editTextColorTheme"
+        <Spinner
+            android:id="@+id/colorSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="#Color code..."
-            android:inputType="textPersonName"
-            android:textSize="20sp" />
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

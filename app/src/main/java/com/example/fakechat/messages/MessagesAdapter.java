@@ -20,10 +20,10 @@ import java.util.ArrayList;
 public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<ChatData> appData;
     private int position;
-    private String colorHex;
+    private String colorName;
     private Context context;
-    public MessagesAdapter(ArrayList<ChatData> appData, Context context, String colorHex, int position){
-        this.appData = appData; this.context = context; this.colorHex = colorHex; this.position = position;
+    public MessagesAdapter(ArrayList<ChatData> appData, Context context, String colorName, int position){
+        this.appData = appData; this.context = context; this.colorName = colorName; this.position = position;
     }
     @Override
     public int getItemViewType(int position) {
@@ -62,7 +62,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 break;
             case LAYOUT_MESSAGE_SENT:
                 ((SentMessageHolder) holder).setMessage(list.get(position).getItemMessage());
-                //((SentMessageHolder) holder).setColor(colorHex);      UNFIXABLE UNTIL PROPER THEMES ARE DEVELOPED
+                ((SentMessageHolder) holder).setColor(context.getResources().getIdentifier("message_bubble_sent_" + colorName.toLowerCase(), "drawable", context.getOpPackageName()));
                 if(list.get(position).getRead())
                     ((SentMessageHolder) holder).setImageViewRead(appData.get(this.position).getAvatar());
                 else
