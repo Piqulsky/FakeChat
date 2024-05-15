@@ -1,11 +1,13 @@
 package com.example.fakechat.settings;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
@@ -21,8 +23,9 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
     private ArrayList<ChatData> appData;
     private Context context;
     private ArrayList<SettingHolder> settingHolders;
-    public SettingsAdapter(ArrayList<ChatData> appData, Context context){
-        this.appData = appData; this.context = context; settingHolders = new ArrayList<>();
+    private String colorHex;
+    public SettingsAdapter(ArrayList<ChatData> appData, Context context, String colorHex){
+        this.appData = appData; this.context = context; settingHolders = new ArrayList<>(); this.colorHex = colorHex;
     }
     @NonNull
     @Override
@@ -38,6 +41,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
         holder.setAvatarResource(appData.get(position).getAvatar());
         holder.setEditTextActivity(appData.get(position).getActivity());
         holder.getSwitchIsRead().setChecked(appData.get(position).getRead());
+        holder.setColorHex(colorHex);
         holder.setRecyclerViewMessages(appData, position);
         holder.getSwitchIsRead().setOnCheckedChangeListener((compoundButton, b) -> {
             appData.get(holder.getAdapterPosition()).setRead(b);
@@ -56,6 +60,12 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
                 appData.get(holder.getAdapterPosition()).setReceiverName(editable.toString());
             }
         });
+        holder.getEditTextReceiver().setOnFocusChangeListener((view, hasFocus) -> {
+            if (!hasFocus) {
+                InputMethodManager inputMethodManager =(InputMethodManager)context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        });
         holder.getEditTextActivity().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -68,6 +78,12 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
             @Override
             public void afterTextChanged(Editable editable) {
                 appData.get(holder.getAdapterPosition()).setActivity(editable.toString());
+            }
+        });
+        holder.getEditTextActivity().setOnFocusChangeListener((view, hasFocus) -> {
+            if (!hasFocus) {
+                InputMethodManager inputMethodManager =(InputMethodManager)context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
         });
         holder.getImageButtonDelete().setOnClickListener(view -> {

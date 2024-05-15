@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -47,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
         linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));
 
         recyclerView = findViewById(R.id.recyclerViewSettings);
-        recyclerAdapter = new SettingsAdapter(appData, this);
+        recyclerAdapter = new SettingsAdapter(appData, this, colorHex);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -56,6 +58,8 @@ public class SettingsActivity extends AppCompatActivity {
         editTextColorTheme.setOnFocusChangeListener((view, b) -> {
             if(!b){
                 View colorView = findViewById(R.id.colorView);
+                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 try{
                     colorView.setBackgroundColor(Color.parseColor(editTextColorTheme.getText().toString()));
                     dataCorrect = true;
@@ -69,6 +73,12 @@ public class SettingsActivity extends AppCompatActivity {
         ImageButton saveButton = findViewById(R.id.imageViewSave);
         EditText editTextChatsName = findViewById(R.id.editTextChatsName);
         editTextChatsName.setText(chatsName);
+        editTextChatsName.setOnFocusChangeListener((view, hasFocus) -> {
+            if (!hasFocus) {
+                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        });
         saveButton.setOnClickListener(view -> {
             if(dataCorrect){
                 chatsName = editTextChatsName.getText().toString();

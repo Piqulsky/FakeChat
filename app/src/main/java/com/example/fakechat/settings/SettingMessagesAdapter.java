@@ -1,11 +1,13 @@
 package com.example.fakechat.settings;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
@@ -21,8 +23,9 @@ public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageH
     private ArrayList<ChatData> appData;
     private int position;
     private Context context;
-    public SettingMessagesAdapter(ArrayList<ChatData> appData, int position, Context context){
-        this.appData = appData; this.position = position; this.context = context;
+    private String colorHex;
+    public SettingMessagesAdapter(ArrayList<ChatData> appData, int position, Context context, String colorHex){
+        this.appData = appData; this.position = position; this.context = context; this.colorHex = colorHex;
     }
     @NonNull
     @Override
@@ -36,12 +39,19 @@ public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageH
         ArrayList<MessageData> list = appData.get(this.position).getMessagesData();
         holder.setEditTextMessage(list.get(position).getItemMessage());
         holder.setSwitchRead(list.get(position).getRead());
+        holder.setSentColor(colorHex);
         if(list.get(position).getItemViewType() == MessageData.LAYOUT_MESSAGE_SENT)
             holder.setSwitchWhose(true);
         else if(list.get(position).getItemViewType() == MessageData.LAYOUT_MESSAGE_RECEIVED)
             holder.setSwitchWhose(false);
 
         holder.getEditTextMessage().addTextChangedListener(new MessageTextChangedListener(holder, this.position));
+        holder.getEditTextMessage().setOnFocusChangeListener((view, hasFocus) -> {
+            if (!hasFocus) {
+                InputMethodManager inputMethodManager =(InputMethodManager)context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        });
         holder.getSwitchRead().setOnCheckedChangeListener(new ReadOnCheckedChangeListener(holder, this.position));
         holder.getSwitchWhose().setOnCheckedChangeListener(new WhoseOnCheckedChangeListener(holder, this.position));
         holder.getImageButtonDeleteMessage().setOnClickListener(view -> {

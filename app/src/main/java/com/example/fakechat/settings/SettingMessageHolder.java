@@ -1,5 +1,7 @@
 package com.example.fakechat.settings;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +26,7 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
     private ImageView imageViewSent;
     private Switch switchWhose;
     private Switch switchRead;
+    private int sentColor;
 
     public SettingMessageHolder(@NonNull View itemView) {
         super(itemView);
@@ -36,6 +39,7 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
         switchWhose.setOnCheckedChangeListener((compoundButton, b) -> {
             if(b){
                 editTextMessage.setBackgroundResource(R.drawable.message_bubble_sent);
+                editTextMessage.getBackground().setColorFilter(sentColor, PorterDuff.Mode.MULTIPLY);
                 imageViewSent.setVisibility(View.VISIBLE);
                 imageViewReceived.setVisibility(View.INVISIBLE);
             }
@@ -55,6 +59,7 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
         switchWhose.setChecked(whose);
         if(whose){
             editTextMessage.setBackgroundResource(R.drawable.message_bubble_sent);
+            editTextMessage.getBackground().setColorFilter(sentColor, PorterDuff.Mode.MULTIPLY);
             imageViewSent.setVisibility(View.VISIBLE);
             imageViewReceived.setVisibility(View.INVISIBLE);
         }
@@ -67,6 +72,9 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
 
     public void setSwitchRead(Boolean read) {
         switchRead.setChecked(read);
+    }
+    public void setSentColor(String color){
+        sentColor = Color.parseColor(color);
     }
 
     public EditText getEditTextMessage() {

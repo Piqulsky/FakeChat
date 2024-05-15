@@ -1,6 +1,7 @@
 package com.example.fakechat.messages;
 
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +25,9 @@ public class SentMessageHolder extends RecyclerView.ViewHolder {
     public void setMessage(String message) {
         textViewMessage.setText(message);
     }
-    public void setColor(String color) {textViewMessage.setBackgroundColor(Color.parseColor(color));}
+    public void setColor(String color) {
+        textViewMessage.getBackground().setColorFilter(Color.parseColor(color), PorterDuff.Mode.MULTIPLY);
+        //textViewMessage.setBackgroundColor(Color.parseColor(color));
+    }
     public void setImageViewRead(String res) {imageViewRead.setImageURI(Uri.parse(res));}
 }

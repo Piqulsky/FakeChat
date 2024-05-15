@@ -27,6 +27,7 @@ public class SettingHolder extends RecyclerView.ViewHolder {
     private ImageButton imageButtonAdd;
     private Switch switchIsRead;
     private Context context;
+    private String colorHex;
     public SettingHolder(@NonNull View itemView) {
         super(itemView);
         context = itemView.getContext();
@@ -46,6 +47,9 @@ public class SettingHolder extends RecyclerView.ViewHolder {
     public void setEditTextActivity(String activity) {
         editTextActivity.setText(activity);
     }
+    public void setColorHex(String colorHex){
+        this.colorHex = colorHex;
+    }
     public EditText getEditTextActivity() {
         return editTextActivity;
     }
@@ -59,7 +63,7 @@ public class SettingHolder extends RecyclerView.ViewHolder {
         return imageButtonAdd;
     }
     public void setRecyclerViewMessages(ArrayList<ChatData> appData, int position) {
-        recyclerAdapter = new SettingMessagesAdapter(appData, position, context);
+        recyclerAdapter = new SettingMessagesAdapter(appData, position, context, colorHex);
         recyclerViewMessages.setAdapter(recyclerAdapter);
         recyclerViewMessages.setHasFixedSize(true);
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(context));
