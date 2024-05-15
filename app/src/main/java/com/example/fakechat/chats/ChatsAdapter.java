@@ -21,9 +21,11 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
     private ArrayList<ChatData> appData;
     private String chatsName;
     private String colorHex;
+    private String bgColorHex;
+    private String bgImageUri;
     private Context context;
-    public ChatsAdapter(ArrayList<ChatData> appData,Context context, String chatsName, String colorHex){
-        this.appData = appData; this.context = context; this.chatsName = chatsName; this.colorHex = colorHex;
+    public ChatsAdapter(ArrayList<ChatData> appData,Context context, String chatsName, String colorHex, String bgColorHex, String bgImageUri){
+        this.appData = appData; this.context = context; this.chatsName = chatsName; this.colorHex = colorHex; this.bgColorHex = bgColorHex; this.bgImageUri = bgImageUri;
     }
     @NonNull
     @Override
@@ -44,6 +46,8 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
             chat.putExtra("ReceiverIndex", position);
             chat.putExtra("ChatsName", chatsName);
             chat.putExtra("ColorHex", colorHex);
+            chat.putExtra("BackgroundColorHex", bgColorHex);
+            chat.putExtra("BackgroundImageUri", bgImageUri);
             context.startActivity(chat);
         });
     }

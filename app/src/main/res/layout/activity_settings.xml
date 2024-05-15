@@ -41,69 +41,158 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/textViewChatsName"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chats name: "
-            android:textSize="24sp" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editTextChatsName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Chats name..."
-            android:inputType="textPersonName"
-            android:textSize="20sp" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textViewColorTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Color theme: "
-            android:textSize="24sp" />
+                    <TextView
+                        android:id="@+id/textViewChatsName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chats name: "
+                        android:textSize="24sp" />
 
-        <View
-            android:id="@+id/colorView"
-            android:layout_width="30sp"
-            android:layout_height="30sp"
-            android:layout_marginTop="10sp"
-            android:background="#FF9800" />
+                    <EditText
+                        android:id="@+id/editTextChatsName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Chats name..."
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
+                </LinearLayout>
 
-        <EditText
-            android:id="@+id/editTextColorTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="#Color code..."
-            android:inputType="textPersonName"
-            android:textSize="20sp" />
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+                    <TextView
+                        android:id="@+id/textViewColorTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Color theme: "
+                        android:textSize="24sp" />
 
-    <ImageButton
-        android:id="@+id/imageButtonAddChat"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_gravity="right"
-        android:background="#FF9800"
-        android:scaleType="fitXY"
-        app:srcCompat="@android:drawable/stat_notify_more" />
+                    <View
+                        android:id="@+id/colorView"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_marginTop="10sp"
+                        android:background="#FF9800" />
+
+                    <EditText
+                        android:id="@+id/editTextColorTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="#Color code..."
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewBackground"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Background color: "
+                        android:textSize="24sp" />
+
+                    <View
+                        android:id="@+id/backgroundView"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_marginTop="10sp"
+                        android:background="#EEEEEE" />
+
+                    <EditText
+                        android:id="@+id/editTextBackground"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="7"
+                        android:hint="#Color code..."
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewBGPhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Background image: "
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:id="@+id/bgButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:backgroundTint="#FF9800"
+                        android:text="Select" />
+
+                    <ImageView
+                        android:id="@+id/imageViewBackground"
+                        android:layout_width="60sp"
+                        android:layout_height="60sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewSettings"
+                    android:layout_width="410sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <ImageButton
+                    android:id="@+id/imageButtonAddChat"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_gravity="right"
+                    android:background="#FF9800"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@android:drawable/stat_notify_more" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
 </LinearLayout>

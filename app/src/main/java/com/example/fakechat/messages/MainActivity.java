@@ -5,6 +5,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.AnyRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,7 +16,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private int receiver;
     private String chatsName;
     private String colorHex;
+    private String bgColorHex;
+    private String bgImageUri;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private MessagesAdapter recyclerAdapter;
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
             receiver = extras.getInt("ReceiverIndex");
             chatsName = extras.getString("ChatsName");
             colorHex = extras.getString("ColorHex");
+            bgColorHex = extras.getString("BackgroundColorHex");
+            bgImageUri = extras.getString("BackgroundImageUri");
         }catch (Exception e){
             appData = new ArrayList<>();
             appData.add(new ChatData("Sergiusz", getUriToDrawable(this, R.drawable.avatar12).toString(), createDataArray()));
@@ -63,7 +67,19 @@ public class MainActivity extends AppCompatActivity {
             receiver = 0;
             chatsName = "Chats";
             colorHex = "#FF9800";
+            bgColorHex = "";
+            bgImageUri = "";
         }
+
+        if(bgColorHex.equals("") && !bgImageUri.equals("")){
+            ImageView backgroundImage = findViewById(R.id.mainBackgroundImage);
+            backgroundImage.setImageURI(Uri.parse(bgImageUri));
+        }
+        else if(!bgColorHex.equals("")){
+            ConstraintLayout parent = findViewById(R.id.mainParent);
+            parent.setBackgroundColor(Color.parseColor(bgColorHex));
+        }
+
         TextView textViewReceiverName = findViewById(R.id.textViewReceiver);
         textViewReceiverName.setText(appData.get(receiver).getReceiverName());
 
@@ -103,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
             chats.putExtra("AppData", appData);
             chats.putExtra("ChatsName", chatsName);
             chats.putExtra("ColorHex", colorHex);
+            chats.putExtra("BackgroundColorHex", bgColorHex);
+            chats.putExtra("BackgroundImageUri", bgImageUri);
             startActivity(chats);
         });
 
@@ -112,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
             call.putExtra("AppData", appData);
             call.putExtra("ChatsName", chatsName);
             call.putExtra("ColorHex", colorHex);
+            call.putExtra("BackgroundColorHex", bgColorHex);
+            call.putExtra("BackgroundImageUri", bgImageUri);
             call.putExtra("ReceiverIndex", receiver);
             startActivity(call);
         });

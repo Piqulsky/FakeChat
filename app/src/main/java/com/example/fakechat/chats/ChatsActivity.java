@@ -1,12 +1,14 @@
 package com.example.fakechat.chats;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +29,8 @@ import java.util.ArrayList;
 public class ChatsActivity extends AppCompatActivity {
     private String chatsName;
     private String colorHex;
+    private String bgColorHex;
+    private String bgImageUri;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private ChatsAdapter recyclerAdapter;
@@ -38,6 +43,17 @@ public class ChatsActivity extends AppCompatActivity {
         appData = (ArrayList<ChatData>) extras.get("AppData");
         chatsName = extras.getString("ChatsName");
         colorHex = extras.getString("ColorHex");
+        bgColorHex = extras.getString("BackgroundColorHex");
+        bgImageUri = extras.getString("BackgroundImageUri");
+
+        if(bgColorHex.equals("") && !bgImageUri.equals("")){
+            ImageView backgroundImage = findViewById(R.id.chatsBackgroundImage);
+            backgroundImage.setImageURI(Uri.parse(bgImageUri));
+        }
+        else if(!bgColorHex.equals("")){
+            ConstraintLayout parent = findViewById(R.id.chatsParent);
+            parent.setBackgroundColor(Color.parseColor(bgColorHex));
+        }
 
         LinearLayout linearLayoutHeader = findViewById(R.id.linearLayoutChatsHeader);
         linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));
@@ -46,7 +62,7 @@ public class ChatsActivity extends AppCompatActivity {
         textViewChats.setText(chatsName);
 
         recyclerView = findViewById(R.id.recyclerViewChats);
-        recyclerAdapter = new ChatsAdapter(appData, this, chatsName, colorHex);
+        recyclerAdapter = new ChatsAdapter(appData, this, chatsName, colorHex, bgColorHex, bgImageUri);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -56,6 +72,8 @@ public class ChatsActivity extends AppCompatActivity {
             settings.putExtra("AppData", appData);
             settings.putExtra("ChatsName", chatsName);
             settings.putExtra("ColorHex", colorHex);
+            settings.putExtra("BackgroundColorHex", bgColorHex);
+            settings.putExtra("BackgroundImageUri", bgImageUri);
             startActivity(settings);
         });
 

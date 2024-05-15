@@ -24,7 +24,7 @@
             android:padding="5dp"
             android:paddingStart="15dp"
             android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#AAAAAA" />
 
         <ImageButton
             android:id="@+id/imageButtonDeleteMessage"

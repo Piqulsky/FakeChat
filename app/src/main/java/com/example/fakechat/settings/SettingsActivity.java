@@ -14,8 +14,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -28,6 +30,8 @@ import java.util.ArrayList;
 public class SettingsActivity extends AppCompatActivity {
     private String chatsName;
     private String colorHex;
+    private String bgColorHex;
+    private String bgImageUri;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private SettingsAdapter recyclerAdapter;
@@ -41,9 +45,17 @@ public class SettingsActivity extends AppCompatActivity {
         appData = (ArrayList<ChatData>) extras.get("AppData");
         chatsName = extras.getString("ChatsName");
         colorHex = extras.getString("ColorHex");
+        bgColorHex = extras.getString("BackgroundColorHex");
+        bgImageUri = extras.getString("BackgroundImageUri");
 
         View color = findViewById(R.id.colorView);
         color.setBackgroundColor(Color.parseColor(colorHex));
+
+        View bgColor = findViewById(R.id.backgroundView);
+        if(bgColorHex.equals(""))
+            bgColor.setBackgroundColor(Color.WHITE);
+        else
+            bgColor.setBackgroundColor(Color.parseColor(bgColorHex));
 
         LinearLayout linearLayoutHeader = findViewById(R.id.linearLayoutSettingsHeader);
         linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));
@@ -70,6 +82,40 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        EditText editTextBackgroundColor = findViewById(R.id.editTextBackground);
+        editTextBackgroundColor.setText(bgColorHex);
+        editTextBackgroundColor.setOnFocusChangeListener((view, b) -> {
+            if(!b){
+                View bgView = findViewById(R.id.backgroundView);
+                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                try{
+                    if(editTextBackgroundColor.getText().toString().equals("")) {
+                        bgView.setBackgroundColor(Color.WHITE);
+                    }
+                    else
+                        bgView.setBackgroundColor(Color.parseColor(editTextBackgroundColor.getText().toString()));
+                    dataCorrect = true;
+                } catch (Exception e){
+                    Toast.makeText(this, "Input correct hexadecimal RGB color code with # or nothing", Toast.LENGTH_LONG).show();
+                    dataCorrect = false;
+                }
+            }
+        });
+
+        ImageView imageViewBackground = findViewById(R.id.imageViewBackground);
+        if(!bgImageUri.equals(""))
+            imageViewBackground.setImageURI(Uri.parse(bgImageUri));
+
+        Button selectBgButton = findViewById(R.id.bgButton);
+        selectBgButton.setOnClickListener(view -> {
+            try {
+                getImage.launch("image/*");
+            } catch (Exception e){
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
         ImageButton saveButton = findViewById(R.id.imageViewSave);
         EditText editTextChatsName = findViewById(R.id.editTextChatsName);
         editTextChatsName.setText(chatsName);
@@ -83,11 +129,14 @@ public class SettingsActivity extends AppCompatActivity {
             if(dataCorrect){
                 chatsName = editTextChatsName.getText().toString();
                 colorHex = editTextColorTheme.getText().toString();
+                bgColorHex = editTextBackgroundColor.getText().toString();
 
                 Intent chats =  new Intent(this, ChatsActivity.class);
                 chats.putExtra("AppData", appData);
                 chats.putExtra("ChatsName", chatsName);
                 chats.putExtra("ColorHex", colorHex);
+                chats.putExtra("BackgroundColorHex", bgColorHex);
+                chats.putExtra("BackgroundImageUri", bgImageUri);
                 startActivity(chats);
             }
         });
@@ -101,5 +150,13 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-
+    ActivityResultLauncher<String> getImage = registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
+        try {
+            ImageView imageViewBackground = findViewById(R.id.imageViewBackground);
+            imageViewBackground.setImageURI(uri);
+            bgImageUri = uri.toString();
+        } catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    });
 }

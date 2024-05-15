@@ -19,6 +19,8 @@ public class CallActivity extends AppCompatActivity {
     private int receiver;
     private String chatsName;
     private String colorHex;
+    private String bgColorHex;
+    private String bgImageUri;
     private ArrayList<ChatData> appData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class CallActivity extends AppCompatActivity {
         receiver = extras.getInt("ReceiverIndex");
         chatsName = extras.getString("ChatsName");
         colorHex = extras.getString("ColorHex");
+        bgColorHex = extras.getString("BackgroundColorHex");
+        bgImageUri = extras.getString("BackgroundImageUri");
 
         TextView textViewReceiverName = findViewById(R.id.textViewCallName);
         textViewReceiverName.setText(appData.get(receiver).getReceiverName());
@@ -43,6 +47,8 @@ public class CallActivity extends AppCompatActivity {
             chat.putExtra("AppData", appData);
             chat.putExtra("ChatsName", chatsName);
             chat.putExtra("ColorHex", colorHex);
+            chat.putExtra("BackgroundColorHex", bgColorHex);
+            chat.putExtra("BackgroundImageUri", bgImageUri);
             chat.putExtra("ReceiverIndex", receiver);
             startActivity(chat);
         });
