@@ -49,12 +49,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusableInTouchMode="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -114,6 +115,97 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/textViewSecondaryTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Secondary theme: "
+                        android:textSize="24sp" />
+
+                    <View
+                        android:id="@+id/secondaryThemeView"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_marginTop="10sp"
+                        android:background="#FF9800" />
+
+                    <EditText
+                        android:id="@+id/editTextSecondaryTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="7"
+                        android:hint="#Color code..."
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewPrimaryColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Primary color: "
+                        android:textSize="24sp" />
+
+                    <View
+                        android:id="@+id/primaryView"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_marginTop="10sp"
+                        android:background="#FFFFFF" />
+
+                    <EditText
+                        android:id="@+id/editTextPrimaryColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="7"
+                        android:hint="#Color code..."
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewSecondaryColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Secondary color: "
+                        android:textSize="24sp" />
+
+                    <View
+                        android:id="@+id/secondaryView"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_marginTop="10sp"
+                        android:background="#000000" />
+
+                    <EditText
+                        android:id="@+id/editTextSecondaryColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="7"
+                        android:hint="#Color code..."
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:id="@+id/textViewBackground"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -164,13 +256,15 @@
                         android:layout_height="60sp" />
                 </LinearLayout>
 
-            </LinearLayout>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20sp" />
 
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView

@@ -21,11 +21,14 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
     private ArrayList<ChatData> appData;
     private String chatsName;
     private String colorHex;
+    private String secondaryThemeHex;
     private String bgColorHex;
     private String bgImageUri;
+    private String primaryHex;
+    private String secondaryHex;
     private Context context;
-    public ChatsAdapter(ArrayList<ChatData> appData,Context context, String chatsName, String colorHex, String bgColorHex, String bgImageUri){
-        this.appData = appData; this.context = context; this.chatsName = chatsName; this.colorHex = colorHex; this.bgColorHex = bgColorHex; this.bgImageUri = bgImageUri;
+    public ChatsAdapter(ArrayList<ChatData> appData,Context context, String chatsName, String colorHex, String secondaryThemeHex, String bgColorHex, String bgImageUri, String primaryHex, String secondaryHex){
+        this.appData = appData; this.context = context; this.chatsName = chatsName; this.colorHex = colorHex; this.secondaryThemeHex = secondaryThemeHex; this.bgColorHex = bgColorHex; this.bgImageUri = bgImageUri; this.primaryHex = primaryHex; this.secondaryHex = secondaryHex;
     }
     @NonNull
     @Override
@@ -38,6 +41,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
     public void onBindViewHolder(@NonNull ChatHolder holder, int position) {
         holder.setReceiverName(appData.get(position).getReceiverName());
         holder.setAvatarResource(Uri.parse(appData.get(position).getAvatar()));
+        holder.setTextViewReceiverColor(secondaryHex);
         if(!appData.get(position).getRead())
             holder.getTextViewReceiver().setTypeface(null, Typeface.BOLD);
         holder.getImageButton().setOnClickListener(view -> {
@@ -46,8 +50,11 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatHolder> {
             chat.putExtra("ReceiverIndex", position);
             chat.putExtra("ChatsName", chatsName);
             chat.putExtra("ColorHex", colorHex);
+            chat.putExtra("SecondaryThemeHex", secondaryThemeHex);
             chat.putExtra("BackgroundColorHex", bgColorHex);
             chat.putExtra("BackgroundImageUri", bgImageUri);
+            chat.putExtra("PrimaryHex", primaryHex);
+            chat.putExtra("SecondaryHex", secondaryHex);
             context.startActivity(chat);
         });
     }

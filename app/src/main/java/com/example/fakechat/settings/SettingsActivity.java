@@ -30,8 +30,11 @@ import java.util.ArrayList;
 public class SettingsActivity extends AppCompatActivity {
     private String chatsName;
     private String colorHex;
+    private String secondaryThemeHex;
     private String bgColorHex;
     private String bgImageUri;
+    private String primaryHex;
+    private String secondaryHex;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private SettingsAdapter recyclerAdapter;
@@ -45,23 +48,35 @@ public class SettingsActivity extends AppCompatActivity {
         appData = (ArrayList<ChatData>) extras.get("AppData");
         chatsName = extras.getString("ChatsName");
         colorHex = extras.getString("ColorHex");
+        secondaryThemeHex = extras.getString("SecondaryThemeHex");
         bgColorHex = extras.getString("BackgroundColorHex");
         bgImageUri = extras.getString("BackgroundImageUri");
+        primaryHex = extras.getString("PrimaryHex");
+        secondaryHex = extras.getString("SecondaryHex");
 
         View color = findViewById(R.id.colorView);
         color.setBackgroundColor(Color.parseColor(colorHex));
 
-        View bgColor = findViewById(R.id.backgroundView);
+        color = findViewById(R.id.secondaryThemeView);
+        color.setBackgroundColor(Color.parseColor(secondaryThemeHex));
+
+        color = findViewById(R.id.primaryView);
+        color.setBackgroundColor(Color.parseColor(primaryHex));
+
+        color = findViewById(R.id.secondaryView);
+        color.setBackgroundColor(Color.parseColor(secondaryHex));
+
+        color = findViewById(R.id.backgroundView);
         if(bgColorHex.equals(""))
-            bgColor.setBackgroundColor(Color.WHITE);
+            color.setBackgroundColor(Color.WHITE);
         else
-            bgColor.setBackgroundColor(Color.parseColor(bgColorHex));
+            color.setBackgroundColor(Color.parseColor(bgColorHex));
 
         LinearLayout linearLayoutHeader = findViewById(R.id.linearLayoutSettingsHeader);
         linearLayoutHeader.setBackgroundColor(Color.parseColor(colorHex));
 
         recyclerView = findViewById(R.id.recyclerViewSettings);
-        recyclerAdapter = new SettingsAdapter(appData, this, colorHex);
+        recyclerAdapter = new SettingsAdapter(appData, this, colorHex, primaryHex, secondaryThemeHex, primaryHex);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -74,6 +89,23 @@ public class SettingsActivity extends AppCompatActivity {
                 inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 try{
                     colorView.setBackgroundColor(Color.parseColor(editTextColorTheme.getText().toString()));
+                    dataCorrect = true;
+                } catch (Exception e){
+                    Toast.makeText(this, "Input correct hexadecimal RGB color code with #", Toast.LENGTH_LONG).show();
+                    dataCorrect = false;
+                }
+            }
+        });
+
+        EditText editTextSecondaryTheme = findViewById(R.id.editTextSecondaryTheme);
+        editTextSecondaryTheme.setText(secondaryThemeHex);
+        editTextSecondaryTheme.setOnFocusChangeListener((view, b) -> {
+            if(!b){
+                View colorView = findViewById(R.id.secondaryThemeView);
+                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                try{
+                    colorView.setBackgroundColor(Color.parseColor(editTextSecondaryTheme.getText().toString()));
                     dataCorrect = true;
                 } catch (Exception e){
                     Toast.makeText(this, "Input correct hexadecimal RGB color code with #", Toast.LENGTH_LONG).show();
@@ -116,6 +148,40 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        EditText editTextPrimaryColor = findViewById(R.id.editTextPrimaryColor);
+        editTextPrimaryColor.setText(primaryHex);
+        editTextPrimaryColor.setOnFocusChangeListener((view, b) -> {
+            if(!b){
+                View colorView = findViewById(R.id.primaryView);
+                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                try{
+                    colorView.setBackgroundColor(Color.parseColor(editTextPrimaryColor.getText().toString()));
+                    dataCorrect = true;
+                } catch (Exception e){
+                    Toast.makeText(this, "Input correct hexadecimal RGB color code with #", Toast.LENGTH_LONG).show();
+                    dataCorrect = false;
+                }
+            }
+        });
+
+        EditText editTextSecondaryColor = findViewById(R.id.editTextSecondaryColor);
+        editTextSecondaryColor.setText(secondaryHex);
+        editTextSecondaryColor.setOnFocusChangeListener((view, b) -> {
+            if(!b){
+                View colorView = findViewById(R.id.secondaryView);
+                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                try{
+                    colorView.setBackgroundColor(Color.parseColor(editTextSecondaryColor.getText().toString()));
+                    dataCorrect = true;
+                } catch (Exception e){
+                    Toast.makeText(this, "Input correct hexadecimal RGB color code with #", Toast.LENGTH_LONG).show();
+                    dataCorrect = false;
+                }
+            }
+        });
+
         ImageButton saveButton = findViewById(R.id.imageViewSave);
         EditText editTextChatsName = findViewById(R.id.editTextChatsName);
         editTextChatsName.setText(chatsName);
@@ -129,14 +195,20 @@ public class SettingsActivity extends AppCompatActivity {
             if(dataCorrect){
                 chatsName = editTextChatsName.getText().toString();
                 colorHex = editTextColorTheme.getText().toString();
+                secondaryThemeHex = editTextSecondaryTheme.getText().toString();
                 bgColorHex = editTextBackgroundColor.getText().toString();
+                primaryHex = editTextPrimaryColor.getText().toString();
+                secondaryHex = editTextSecondaryColor.getText().toString();
 
                 Intent chats =  new Intent(this, ChatsActivity.class);
                 chats.putExtra("AppData", appData);
                 chats.putExtra("ChatsName", chatsName);
                 chats.putExtra("ColorHex", colorHex);
+                chats.putExtra("SecondaryThemeHex", secondaryThemeHex);
                 chats.putExtra("BackgroundColorHex", bgColorHex);
                 chats.putExtra("BackgroundImageUri", bgImageUri);
+                chats.putExtra("PrimaryHex", primaryHex);
+                chats.putExtra("SecondaryHex", secondaryHex);
                 startActivity(chats);
             }
         });

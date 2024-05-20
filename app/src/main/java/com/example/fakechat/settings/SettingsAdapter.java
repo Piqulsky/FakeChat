@@ -23,9 +23,12 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
     private ArrayList<ChatData> appData;
     private Context context;
     private ArrayList<SettingHolder> settingHolders;
-    private String colorHex;
-    public SettingsAdapter(ArrayList<ChatData> appData, Context context, String colorHex){
-        this.appData = appData; this.context = context; settingHolders = new ArrayList<>(); this.colorHex = colorHex;
+    private String sentHex;
+    private String sentTextHex;
+    private String receivedHex;
+    private String receivedTextHex;
+    public SettingsAdapter(ArrayList<ChatData> appData, Context context, String sentHex, String sentTextHex, String receivedHex, String receivedTextHex){
+        this.appData = appData; this.context = context; settingHolders = new ArrayList<>(); this.sentHex = sentHex; this.sentTextHex = sentTextHex; this.receivedHex = receivedHex; this.receivedTextHex = receivedTextHex;
     }
     @NonNull
     @Override
@@ -41,7 +44,10 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
         holder.setAvatarResource(appData.get(position).getAvatar());
         holder.setEditTextActivity(appData.get(position).getActivity());
         holder.getSwitchIsRead().setChecked(appData.get(position).getRead());
-        holder.setColorHex(colorHex);
+        holder.setSentHex(sentHex);
+        holder.setSentTextHex(sentTextHex);
+        holder.setReceivedHex(receivedHex);
+        holder.setReceivedTextHex(receivedTextHex);
         holder.setRecyclerViewMessages(appData, position);
         holder.getSwitchIsRead().setOnCheckedChangeListener((compoundButton, b) -> {
             appData.get(holder.getAdapterPosition()).setRead(b);

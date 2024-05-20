@@ -36,8 +36,11 @@ public class MainActivity extends AppCompatActivity {
     private int receiver;
     private String chatsName;
     private String colorHex;
+    private String secondaryThemeHex;
     private String bgColorHex;
     private String bgImageUri;
+    private String primaryHex;
+    private String secondaryHex;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private MessagesAdapter recyclerAdapter;
@@ -52,8 +55,11 @@ public class MainActivity extends AppCompatActivity {
             receiver = extras.getInt("ReceiverIndex");
             chatsName = extras.getString("ChatsName");
             colorHex = extras.getString("ColorHex");
+            secondaryThemeHex = extras.getString("SecondaryThemeHex");
             bgColorHex = extras.getString("BackgroundColorHex");
             bgImageUri = extras.getString("BackgroundImageUri");
+            primaryHex = extras.getString("PrimaryHex");
+            secondaryHex = extras.getString("SecondaryHex");
         }catch (Exception e){
             appData = new ArrayList<>();
             appData.add(new ChatData("Sergiusz", getUriToDrawable(this, R.drawable.avatar12).toString(), createDataArray()));
@@ -67,8 +73,11 @@ public class MainActivity extends AppCompatActivity {
             receiver = 0;
             chatsName = "Chats";
             colorHex = "#FF9800";
+            secondaryThemeHex = "#434343";
             bgColorHex = "";
             bgImageUri = "";
+            primaryHex = "#FFFFFF";
+            secondaryHex = "#000000";
         }
 
         if(bgColorHex.equals("") && !bgImageUri.equals("")){
@@ -82,11 +91,14 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textViewReceiverName = findViewById(R.id.textViewReceiver);
         textViewReceiverName.setText(appData.get(receiver).getReceiverName());
+        textViewReceiverName.setTextColor(Color.parseColor(primaryHex));
 
         TextView textViewActivity = findViewById(R.id.textViewActivity);
         textViewActivity.setText(appData.get(receiver).getActivity());
         if(appData.get(receiver).getActivity().equals("online"))
             textViewActivity.setTextColor(Color.GREEN);
+        else
+            textViewActivity.setTextColor(Color.parseColor(primaryHex));
         appData.get(receiver).setRead(true);
 
         ImageView imageViewAvatar = findViewById(R.id.imageViewReceiver);
@@ -98,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutFooter.setBackgroundColor(Color.parseColor(colorHex));
 
         recyclerView = findViewById(R.id.recyclerViewMessages);
-        recyclerAdapter = new MessagesAdapter(appData, this, colorHex, receiver);
+        recyclerAdapter = new MessagesAdapter(appData, this, colorHex, primaryHex, secondaryThemeHex, primaryHex, receiver);
         recyclerView.setAdapter(recyclerAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(false);
@@ -119,8 +131,11 @@ public class MainActivity extends AppCompatActivity {
             chats.putExtra("AppData", appData);
             chats.putExtra("ChatsName", chatsName);
             chats.putExtra("ColorHex", colorHex);
+            chats.putExtra("SecondaryThemeHex", secondaryThemeHex);
             chats.putExtra("BackgroundColorHex", bgColorHex);
             chats.putExtra("BackgroundImageUri", bgImageUri);
+            chats.putExtra("PrimaryHex", primaryHex);
+            chats.putExtra("SecondaryHex", secondaryHex);
             startActivity(chats);
         });
 
@@ -130,9 +145,12 @@ public class MainActivity extends AppCompatActivity {
             call.putExtra("AppData", appData);
             call.putExtra("ChatsName", chatsName);
             call.putExtra("ColorHex", colorHex);
+            call.putExtra("SecondaryThemeHex", secondaryThemeHex);
             call.putExtra("BackgroundColorHex", bgColorHex);
             call.putExtra("BackgroundImageUri", bgImageUri);
             call.putExtra("ReceiverIndex", receiver);
+            call.putExtra("PrimaryHex", primaryHex);
+            call.putExtra("SecondaryHex", secondaryHex);
             startActivity(call);
         });
 

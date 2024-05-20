@@ -27,6 +27,9 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
     private Switch switchWhose;
     private Switch switchRead;
     private int sentColor;
+    private int sentTextColor;
+    private int receivedColor;
+    private int receivedTextColor;
 
     public SettingMessageHolder(@NonNull View itemView) {
         super(itemView);
@@ -60,11 +63,14 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
         if(whose){
             editTextMessage.setBackgroundResource(R.drawable.message_bubble_sent);
             editTextMessage.getBackground().setColorFilter(sentColor, PorterDuff.Mode.MULTIPLY);
+            editTextMessage.setTextColor(sentTextColor);
             imageViewSent.setVisibility(View.VISIBLE);
             imageViewReceived.setVisibility(View.INVISIBLE);
         }
         else {
-            editTextMessage.setBackgroundResource(R.drawable.message_bubble_received);
+            editTextMessage.setBackgroundResource(R.drawable.message_bubble_received);;
+            editTextMessage.getBackground().setColorFilter(receivedColor, PorterDuff.Mode.MULTIPLY);
+            editTextMessage.setTextColor(receivedTextColor);
             imageViewSent.setVisibility(View.INVISIBLE);
             imageViewReceived.setVisibility(View.VISIBLE);
         }
@@ -75,6 +81,15 @@ public class SettingMessageHolder extends RecyclerView.ViewHolder {
     }
     public void setSentColor(String color){
         sentColor = Color.parseColor(color);
+    }
+    public void setSentTextColor(String color){
+        sentTextColor = Color.parseColor(color);
+    }
+    public void setReceivedColor(String color){
+        receivedColor = Color.parseColor(color);
+    }
+    public void setReceivedTextColor(String color){
+        receivedTextColor = Color.parseColor(color);
     }
 
     public EditText getEditTextMessage() {

@@ -23,9 +23,12 @@ public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageH
     private ArrayList<ChatData> appData;
     private int position;
     private Context context;
-    private String colorHex;
-    public SettingMessagesAdapter(ArrayList<ChatData> appData, int position, Context context, String colorHex){
-        this.appData = appData; this.position = position; this.context = context; this.colorHex = colorHex;
+    private String sentHex;
+    private String sentTextHex;
+    private String receivedHex;
+    private String receivedTextHex;
+    public SettingMessagesAdapter(ArrayList<ChatData> appData, int position, Context context, String sentHex, String sentTextHex, String receivedHex, String receivedTextHex){
+        this.appData = appData; this.position = position; this.context = context; this.sentHex = sentHex; this.sentTextHex = sentTextHex; this.receivedHex = receivedHex; this.receivedTextHex = receivedTextHex;
     }
     @NonNull
     @Override
@@ -39,7 +42,10 @@ public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageH
         ArrayList<MessageData> list = appData.get(this.position).getMessagesData();
         holder.setEditTextMessage(list.get(position).getItemMessage());
         holder.setSwitchRead(list.get(position).getRead());
-        holder.setSentColor(colorHex);
+        holder.setSentColor(sentHex);
+        holder.setSentTextColor(sentTextHex);
+        holder.setReceivedColor(receivedHex);
+        holder.setReceivedTextColor(receivedTextHex);
         if(list.get(position).getItemViewType() == MessageData.LAYOUT_MESSAGE_SENT)
             holder.setSwitchWhose(true);
         else if(list.get(position).getItemViewType() == MessageData.LAYOUT_MESSAGE_RECEIVED)

@@ -29,8 +29,11 @@ import java.util.ArrayList;
 public class ChatsActivity extends AppCompatActivity {
     private String chatsName;
     private String colorHex;
+    private String secondaryThemeHex;
     private String bgColorHex;
     private String bgImageUri;
+    private String primaryHex;
+    private String secondaryHex;
     private ArrayList<ChatData> appData;
     private RecyclerView recyclerView;
     private ChatsAdapter recyclerAdapter;
@@ -43,8 +46,11 @@ public class ChatsActivity extends AppCompatActivity {
         appData = (ArrayList<ChatData>) extras.get("AppData");
         chatsName = extras.getString("ChatsName");
         colorHex = extras.getString("ColorHex");
+        secondaryThemeHex = extras.getString("SecondaryThemeHex");
         bgColorHex = extras.getString("BackgroundColorHex");
         bgImageUri = extras.getString("BackgroundImageUri");
+        primaryHex = extras.getString("PrimaryHex");
+        secondaryHex = extras.getString("SecondaryHex");
 
         if(bgColorHex.equals("") && !bgImageUri.equals("")){
             ImageView backgroundImage = findViewById(R.id.chatsBackgroundImage);
@@ -60,9 +66,10 @@ public class ChatsActivity extends AppCompatActivity {
 
         TextView textViewChats = findViewById(R.id.textViewChats);
         textViewChats.setText(chatsName);
+        textViewChats.setTextColor(Color.parseColor(primaryHex));
 
         recyclerView = findViewById(R.id.recyclerViewChats);
-        recyclerAdapter = new ChatsAdapter(appData, this, chatsName, colorHex, bgColorHex, bgImageUri);
+        recyclerAdapter = new ChatsAdapter(appData, this, chatsName, colorHex, secondaryThemeHex, bgColorHex, bgImageUri, primaryHex, secondaryHex);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -72,8 +79,11 @@ public class ChatsActivity extends AppCompatActivity {
             settings.putExtra("AppData", appData);
             settings.putExtra("ChatsName", chatsName);
             settings.putExtra("ColorHex", colorHex);
+            settings.putExtra("SecondaryThemeHex", secondaryThemeHex);
             settings.putExtra("BackgroundColorHex", bgColorHex);
             settings.putExtra("BackgroundImageUri", bgImageUri);
+            settings.putExtra("PrimaryHex", primaryHex);
+            settings.putExtra("SecondaryHex", secondaryHex);
             startActivity(settings);
         });
 

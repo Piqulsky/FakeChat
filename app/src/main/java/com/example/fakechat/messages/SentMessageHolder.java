@@ -27,7 +27,9 @@ public class SentMessageHolder extends RecyclerView.ViewHolder {
     }
     public void setColor(String color) {
         textViewMessage.getBackground().setColorFilter(Color.parseColor(color), PorterDuff.Mode.MULTIPLY);
-        //textViewMessage.setBackgroundColor(Color.parseColor(color));
+    }
+    public void setTextColor(String color) {
+        textViewMessage.setTextColor(Color.parseColor(color));
     }
     public void setImageViewRead(String res) {imageViewRead.setImageURI(Uri.parse(res));}
 }

@@ -20,10 +20,13 @@ import java.util.ArrayList;
 public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<ChatData> appData;
     private int position;
-    private String colorHex;
+    private String sentHex;
+    private String sentTextHex;
+    private String receivedHex;
+    private String receivedTextHex;
     private Context context;
-    public MessagesAdapter(ArrayList<ChatData> appData, Context context, String colorHex, int position){
-        this.appData = appData; this.context = context; this.colorHex = colorHex; this.position = position;
+    public MessagesAdapter(ArrayList<ChatData> appData, Context context, String sentHex, String sentTextHex, String receivedHex, String receivedTextHex, int position){
+        this.appData = appData; this.context = context; this.sentHex = sentHex; this.sentTextHex = sentTextHex; this.receivedHex = receivedHex; this.receivedTextHex = receivedTextHex; this.position = position;
     }
     @Override
     public int getItemViewType(int position) {
@@ -58,11 +61,14 @@ public class MessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (list.get(position).getItemViewType()){
             case LAYOUT_MESSAGE_RECEIVED:
                 ((ReceivedMessageHolder) holder).setMessage(list.get(position).getItemMessage());
+                ((ReceivedMessageHolder) holder).setColor(receivedHex);
+                ((ReceivedMessageHolder) holder).setTextColor(receivedTextHex);
                 ((ReceivedMessageHolder) holder).setImage(appData.get(this.position).getAvatar());
                 break;
             case LAYOUT_MESSAGE_SENT:
                 ((SentMessageHolder) holder).setMessage(list.get(position).getItemMessage());
-                ((SentMessageHolder) holder).setColor(colorHex);
+                ((SentMessageHolder) holder).setColor(sentHex);
+                ((SentMessageHolder) holder).setTextColor(sentTextHex);
                 if(list.get(position).getRead())
                     ((SentMessageHolder) holder).setImageViewRead(appData.get(this.position).getAvatar());
                 else
