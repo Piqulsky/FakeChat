@@ -7,7 +7,7 @@ public class DelayedData implements Serializable {
     private float seconds;
 
     public DelayedData(){
-        message = ""; seconds = 0.0f;
+        message = ""; seconds = 1.0f;
     }
     public DelayedData(String message, float seconds){
         this.message = message;

@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.fakechat.CallActivity;
 import com.example.fakechat.ChatData;
+import com.example.fakechat.DelayedData;
 import com.example.fakechat.MessageData;
 import com.example.fakechat.chats.ChatsActivity;
 import com.example.fakechat.R;
@@ -63,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             appData = new ArrayList<>();
             appData.add(new ChatData("Sergiusz", getUriToDrawable(this, R.drawable.avatar12).toString(), createDataArray()));
+            appData.get(0).getDelayedData().add(new DelayedData("Test", 1.0f));
+            appData.get(0).getDelayedData().add(new DelayedData("Test2", 4.0f));
+            appData.get(0).getDelayedData().add(new DelayedData("Test3", 5.0f));
             appData.add(new ChatData("Igor", getUriToDrawable(this, R.drawable.avatar11).toString(), new ArrayList<>()));
             appData.get(1).setActivity("15m ago");
             appData.add(new ChatData("Kaś", getUriToDrawable(this, R.drawable.avatar9).toString(), new ArrayList<>()));
@@ -116,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager.setReverseLayout(false);
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        appData.get(receiver).getDelayedData().forEach(delayedData -> {
+            recyclerView.postDelayed(() -> {
+                addToRecyclerData(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, delayedData.getMessage()));
+            }, Math.round(delayedData.getSeconds()*1000+1000));
+        });
+        appData.get(receiver).getDelayedData().clear();
 
         ImageButton sendButton = findViewById(R.id.imageViewSend);
         sendButton.setOnClickListener(view -> {
