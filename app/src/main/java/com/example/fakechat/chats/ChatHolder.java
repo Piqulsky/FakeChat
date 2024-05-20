@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.fakechat.R;
 
 public class ChatHolder extends RecyclerView.ViewHolder {
-    private TextView textViewReceiver;
-    private ImageView imageViewAvatar;
-    private ImageButton imageViewButton;
+    private final TextView textViewReceiver;
+    private final ImageView imageViewAvatar;
+    private final ImageButton imageViewButton;
     public ChatHolder(@NonNull View itemView) {
         super(itemView);
         textViewReceiver = itemView.findViewById(R.id.textViewChatReceiver);

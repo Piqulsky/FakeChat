@@ -13,20 +13,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fakechat.ChatData;
+import com.example.fakechat.DelayedData;
+import com.example.fakechat.MessageData;
 import com.example.fakechat.R;
 
 import java.util.ArrayList;
 
 public class SettingHolder extends RecyclerView.ViewHolder {
-    private EditText editTextReceiver;
-    private ImageView imageViewAvatar;
-    private ImageButton imageButtonDelete;
-    private EditText editTextActivity;
-    private RecyclerView recyclerViewMessages;
-    private SettingMessagesAdapter recyclerAdapter;
-    private ImageButton imageButtonAdd;
-    private Switch switchIsRead;
-    private Context context;
+    private final EditText editTextReceiver;
+    private final ImageView imageViewAvatar;
+    private final ImageButton imageButtonDelete;
+    private final EditText editTextActivity;
+    private final RecyclerView recyclerViewMessages;
+    private final ImageButton imageButtonAdd;
+    private final Switch switchIsRead;
+    private final RecyclerView recyclerViewDelayed;
+    private final ImageButton imageButtonAddDelayed;
+    private final Context context;
     private String sentHex;
     private String sentTextHex;
     private String receivedHex;
@@ -41,6 +44,9 @@ public class SettingHolder extends RecyclerView.ViewHolder {
         recyclerViewMessages = itemView.findViewById(R.id.recyclerViewSettingMessages);
         imageButtonAdd = itemView.findViewById(R.id.imageButtonAddMessage);
         switchIsRead = itemView.findViewById(R.id.switchIsRead);
+        recyclerViewDelayed = itemView.findViewById(R.id.recyclerViewSettingDelayed);
+        imageButtonAddDelayed = itemView.findViewById(R.id.imageButtonAddDelayed);
+
     }
     public EditText getEditTextReceiver() {
         return editTextReceiver;
@@ -74,10 +80,19 @@ public class SettingHolder extends RecyclerView.ViewHolder {
     public ImageButton getImageButtonAdd() {
         return imageButtonAdd;
     }
-    public void setRecyclerViewMessages(ArrayList<ChatData> appData, int position) {
-        recyclerAdapter = new SettingMessagesAdapter(appData, position, context, sentHex, sentTextHex, receivedHex, receivedTextHex);
+    public void setRecyclerViewMessages(ArrayList<MessageData> messages) {
+        SettingMessagesAdapter recyclerAdapter = new SettingMessagesAdapter(messages, context, sentHex, sentTextHex, receivedHex, receivedTextHex);
         recyclerViewMessages.setAdapter(recyclerAdapter);
         recyclerViewMessages.setHasFixedSize(true);
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(context));
+    }
+    public ImageButton getImageButtonAddDelayed(){
+        return imageButtonAddDelayed;
+    }
+    public void setRecyclerViewDelayed(ArrayList<DelayedData> messages) {
+        SettingDelayedAdapter recyclerAdapter = new SettingDelayedAdapter(messages, context, receivedHex, receivedTextHex);
+        recyclerViewDelayed.setAdapter(recyclerAdapter);
+        recyclerViewDelayed.setHasFixedSize(true);
+        recyclerViewDelayed.setLayoutManager(new LinearLayoutManager(context));
     }
 }

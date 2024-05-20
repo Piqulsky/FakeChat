@@ -80,4 +80,26 @@
         android:scaleType="fitXY"
         app:srcCompat="@android:drawable/stat_notify_more" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delayed messages:"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSettingDelayed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/imageButtonAddDelayed"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:layout_gravity="right"
+        android:background="#FF9800"
+        android:scaleType="fitXY"
+        app:srcCompat="@android:drawable/stat_notify_more" />
+
 </LinearLayout>

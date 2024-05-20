@@ -20,15 +20,14 @@ import com.example.fakechat.MessageData;
 import java.util.ArrayList;
 
 public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageHolder> {
-    private ArrayList<ChatData> appData;
-    private int position;
+    private ArrayList<MessageData> list;
     private Context context;
     private String sentHex;
     private String sentTextHex;
     private String receivedHex;
     private String receivedTextHex;
-    public SettingMessagesAdapter(ArrayList<ChatData> appData, int position, Context context, String sentHex, String sentTextHex, String receivedHex, String receivedTextHex){
-        this.appData = appData; this.position = position; this.context = context; this.sentHex = sentHex; this.sentTextHex = sentTextHex; this.receivedHex = receivedHex; this.receivedTextHex = receivedTextHex;
+    public SettingMessagesAdapter(ArrayList<MessageData> list, Context context, String sentHex, String sentTextHex, String receivedHex, String receivedTextHex){
+        this.list = list; this.context = context; this.sentHex = sentHex; this.sentTextHex = sentTextHex; this.receivedHex = receivedHex; this.receivedTextHex = receivedTextHex;
     }
     @NonNull
     @Override
@@ -39,7 +38,6 @@ public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageH
 
     @Override
     public void onBindViewHolder(@NonNull SettingMessageHolder holder, int position) {
-        ArrayList<MessageData> list = appData.get(this.position).getMessagesData();
         holder.setEditTextMessage(list.get(position).getItemMessage());
         holder.setSwitchRead(list.get(position).getRead());
         holder.setSentColor(sentHex);
@@ -51,25 +49,24 @@ public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageH
         else if(list.get(position).getItemViewType() == MessageData.LAYOUT_MESSAGE_RECEIVED)
             holder.setSwitchWhose(false);
 
-        holder.getEditTextMessage().addTextChangedListener(new MessageTextChangedListener(holder, this.position));
+        holder.getEditTextMessage().addTextChangedListener(new MessageTextChangedListener(holder));
         holder.getEditTextMessage().setOnFocusChangeListener((view, hasFocus) -> {
             if (!hasFocus) {
                 InputMethodManager inputMethodManager =(InputMethodManager)context.getSystemService(Activity.INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
         });
-        holder.getSwitchRead().setOnCheckedChangeListener(new ReadOnCheckedChangeListener(holder, this.position));
-        holder.getSwitchWhose().setOnCheckedChangeListener(new WhoseOnCheckedChangeListener(holder, this.position));
+        holder.getSwitchRead().setOnCheckedChangeListener(new ReadOnCheckedChangeListener(holder));
+        holder.getSwitchWhose().setOnCheckedChangeListener(new WhoseOnCheckedChangeListener(holder));
         holder.getImageButtonDeleteMessage().setOnClickListener(view -> {
-            appData.get(this.position).getMessagesData().remove(holder.getAdapterPosition());
+            list.remove(holder.getAdapterPosition());
             notifyItemRemoved(holder.getAdapterPosition());
         });
     }
     private class MessageTextChangedListener implements TextWatcher{
         @NonNull SettingMessageHolder holder;
-        int chatPosition;
-        public MessageTextChangedListener(@NonNull SettingMessageHolder holder, int chatPosition){
-            this.holder = holder; this.chatPosition = chatPosition;
+        public MessageTextChangedListener(@NonNull SettingMessageHolder holder){
+            this.holder = holder;
         }
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -81,35 +78,33 @@ public class SettingMessagesAdapter extends RecyclerView.Adapter<SettingMessageH
         }
         @Override
         public void afterTextChanged(Editable editable) {
-            appData.get(chatPosition).getMessagesData().get(holder.getAdapterPosition()).setItemMessage(editable.toString());
+            list.get(holder.getAdapterPosition()).setItemMessage(editable.toString());
         }
     }
     private class ReadOnCheckedChangeListener implements CompoundButton.OnCheckedChangeListener{
         @NonNull SettingMessageHolder holder;
-        int chatPosition;
-        public ReadOnCheckedChangeListener(@NonNull SettingMessageHolder holder, int chatPosition){
-            this.holder = holder; this.chatPosition = chatPosition;
+        public ReadOnCheckedChangeListener(@NonNull SettingMessageHolder holder){
+            this.holder = holder;
         }
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-            appData.get(chatPosition).getMessagesData().get(holder.getAdapterPosition()).setRead(b);
+            list.get(holder.getAdapterPosition()).setRead(b);
         }
     }
     private class WhoseOnCheckedChangeListener implements CompoundButton.OnCheckedChangeListener{
         @NonNull SettingMessageHolder holder;
-        int chatPosition;
-        public WhoseOnCheckedChangeListener(@NonNull SettingMessageHolder holder, int chatPosition){
-            this.holder = holder; this.chatPosition = chatPosition;
+        public WhoseOnCheckedChangeListener(@NonNull SettingMessageHolder holder){
+            this.holder = holder;
         }
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
             holder.setSwitchWhose(b);
-            appData.get(chatPosition).getMessagesData().get(holder.getAdapterPosition()).setItemViewType(b ? MessageData.LAYOUT_MESSAGE_SENT : MessageData.LAYOUT_MESSAGE_RECEIVED);
+            list.get(holder.getAdapterPosition()).setItemViewType(b ? MessageData.LAYOUT_MESSAGE_SENT : MessageData.LAYOUT_MESSAGE_RECEIVED);
         }
     }
     @Override
     public int getItemCount() {
-        return appData.get(this.position).getMessagesData().size();
+        return list.size();
     }
 
 }

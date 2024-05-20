@@ -20,12 +20,12 @@ import com.example.fakechat.messages.MainActivity;
 import java.util.ArrayList;
 
 public class SettingMessageHolder extends RecyclerView.ViewHolder {
-    private EditText editTextMessage;
-    private ImageButton imageButtonDeleteMessage;
-    private ImageView imageViewReceived;
-    private ImageView imageViewSent;
-    private Switch switchWhose;
-    private Switch switchRead;
+    private final EditText editTextMessage;
+    private final ImageButton imageButtonDeleteMessage;
+    private final ImageView imageViewReceived;
+    private final ImageView imageViewSent;
+    private final Switch switchWhose;
+    private final Switch switchRead;
     private int sentColor;
     private int sentTextColor;
     private int receivedColor;

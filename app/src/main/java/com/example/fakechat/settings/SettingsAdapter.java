@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fakechat.ChatData;
+import com.example.fakechat.DelayedData;
 import com.example.fakechat.MessageData;
 import com.example.fakechat.R;
 
@@ -40,15 +41,17 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
     }
     @Override
     public void onBindViewHolder(@NonNull SettingHolder holder, int position) {
-        holder.setReceiverName(appData.get(position).getReceiverName());
-        holder.setAvatarResource(appData.get(position).getAvatar());
-        holder.setEditTextActivity(appData.get(position).getActivity());
-        holder.getSwitchIsRead().setChecked(appData.get(position).getRead());
+        ChatData chatData = appData.get(position);
+        holder.setReceiverName(chatData.getReceiverName());
+        holder.setAvatarResource(chatData.getAvatar());
+        holder.setEditTextActivity(chatData.getActivity());
+        holder.getSwitchIsRead().setChecked(chatData.getRead());
         holder.setSentHex(sentHex);
         holder.setSentTextHex(sentTextHex);
         holder.setReceivedHex(receivedHex);
         holder.setReceivedTextHex(receivedTextHex);
-        holder.setRecyclerViewMessages(appData, position);
+        holder.setRecyclerViewMessages(chatData.getMessagesData());
+        holder.setRecyclerViewDelayed(chatData.getDelayedData());
         holder.getSwitchIsRead().setOnCheckedChangeListener((compoundButton, b) -> {
             appData.get(holder.getAdapterPosition()).setRead(b);
         });
@@ -98,6 +101,11 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingHolder>{
         });
         holder.getImageButtonAdd().setOnClickListener(view -> {
             appData.get(holder.getAdapterPosition()).getMessagesData().add(new MessageData());
+            notifyItemChanged(holder.getAdapterPosition());
+        });
+        holder.getImageButtonAddDelayed().setOnClickListener(view -> {
+            ArrayList<DelayedData> tmp = appData.get(holder.getAdapterPosition()).getDelayedData();
+            appData.get(holder.getAdapterPosition()).getDelayedData().add(new DelayedData());
             notifyItemChanged(holder.getAdapterPosition());
         });
     }

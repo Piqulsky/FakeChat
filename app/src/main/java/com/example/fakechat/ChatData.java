@@ -9,16 +9,19 @@ public class ChatData implements Serializable {
     private Boolean isRead = true;
     private String activity = "online";
     private ArrayList<MessageData> messagesData;
+    private ArrayList<DelayedData> delayedData;
 
     public ChatData(){
         receiverName = "EmptyName";
         avatar = "android.resource://com.example.fakechat/drawable/avatar";
         messagesData = new ArrayList<>();
+        delayedData = new ArrayList<>();
     }
     public ChatData(String receiverName, String avatar, ArrayList<MessageData> messagesData){
         this.receiverName = receiverName;
         this.avatar = avatar;
         this.messagesData = messagesData;
+        this.delayedData = new ArrayList<>();
     }
     public String getReceiverName() {
         return receiverName;
@@ -49,5 +52,11 @@ public class ChatData implements Serializable {
     }
     public String getActivity() {
         return activity;
+    }
+    public ArrayList<DelayedData> getDelayedData(){
+        return delayedData;
+    }
+    public void setDelayedData(ArrayList<DelayedData> delayedData){
+        this.delayedData = delayedData;
     }
 }
