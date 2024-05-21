@@ -76,14 +76,29 @@
                     android:textSize="36sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textViewActivity"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="30sp"
-                    android:paddingBottom="10sp"
-                    android:text="Activity"
-                    android:textColor="#FFFFFF" />
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/activityDot"
+                        android:layout_width="10sp"
+                        android:layout_height="10sp"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginTop="6sp"
+                        android:background="@drawable/activity_dot" />
+
+                    <TextView
+                        android:id="@+id/textViewActivity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="5sp"
+                        android:paddingBottom="8sp"
+                        android:text="Activity"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>

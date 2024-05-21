@@ -56,7 +56,7 @@ public class ChatData implements Serializable {
     public ArrayList<DelayedData> getDelayedData(){
         return delayedData;
     }
-    public void setDelayedData(ArrayList<DelayedData> delayedData){
-        this.delayedData = delayedData;
+    public void readAllMessages(){
+        messagesData.forEach(messageData -> messageData.setRead(true));
     }
 }

@@ -17,6 +17,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -100,10 +101,15 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textViewActivity = findViewById(R.id.textViewActivity);
         textViewActivity.setText(appData.get(receiver).getActivity());
-        if(appData.get(receiver).getActivity().equals("online"))
+        View activityDot = findViewById(R.id.activityDot);
+        if(appData.get(receiver).getActivity().equals("online")){
+            activityDot.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
             textViewActivity.setTextColor(Color.GREEN);
-        else
+        }
+        else{
+            activityDot.getBackground().setColorFilter(Color.parseColor(primaryHex), PorterDuff.Mode.MULTIPLY);
             textViewActivity.setTextColor(Color.parseColor(primaryHex));
+        }
         appData.get(receiver).setRead(true);
 
         ImageView imageViewAvatar = findViewById(R.id.imageViewReceiver);
@@ -124,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
         appData.get(receiver).getDelayedData().forEach(delayedData -> {
             recyclerView.postDelayed(() -> {
+                appData.get(receiver).readAllMessages();
                 addToRecyclerData(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, delayedData.getMessage()));
             }, Math.round(delayedData.getSeconds()*1000+1000));
         });
@@ -209,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
     public void addToRecyclerData(MessageData messageData){
         appData.get(receiver).addMessageData(messageData);
         recyclerView.scrollToPosition(recyclerAdapter.getItemCount() - 1);
+        recyclerView.getAdapter().notifyDataSetChanged();
     }
     ActivityResultLauncher<String> getImage = registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
         try {
