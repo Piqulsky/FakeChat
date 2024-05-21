@@ -20,13 +20,13 @@
             android:id="@+id/imageViewSave"
             android:layout_width="75sp"
             android:layout_height="75sp"
+            android:background="?android:attr/selectableItemBackground"
             android:paddingLeft="20sp"
             android:paddingTop="20sp"
             android:paddingRight="20sp"
             android:paddingBottom="20sp"
-            android:background="?android:attr/selectableItemBackground"
             android:scaleType="fitXY"
-            app:srcCompat="@android:drawable/ic_menu_save" />
+            app:srcCompat="@drawable/save" />
 
         <TextView
             android:id="@+id/textViewSettings"
@@ -34,7 +34,7 @@
             android:layout_height="match_parent"
             android:paddingStart="10sp"
             android:paddingTop="15sp"
-            android:text="Settings"
+            android:text="Editor"
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold" />
@@ -248,7 +248,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:backgroundTint="#FF9800"
-                        android:text="Select" />
+                        android:text="Select"
+                        android:textColor="#FFFFFF" />
 
                     <ImageView
                         android:id="@+id/imageViewBackground"
@@ -280,9 +281,9 @@
                     android:layout_width="50sp"
                     android:layout_height="50sp"
                     android:layout_gravity="right"
-                    android:background="#FF9800"
+                    android:background="?android:attr/selectableItemBackground"
                     android:scaleType="fitXY"
-                    app:srcCompat="@android:drawable/stat_notify_more" />
+                    app:srcCompat="@drawable/newmessage" />
 
             </LinearLayout>
 

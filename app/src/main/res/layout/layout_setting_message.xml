@@ -31,8 +31,9 @@
             android:layout_width="20sp"
             android:layout_height="20sp"
             android:background="?android:attr/selectableItemBackground"
+            android:padding="1sp"
             android:scaleType="fitXY"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+            app:srcCompat="@drawable/x" />
     </LinearLayout>
 
     <Switch
@@ -47,9 +48,9 @@
 
         <ImageView
             android:id="@+id/imageViewReceived"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_send" />
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            app:srcCompat="@drawable/enterarrow" />
 
         <Switch
             android:id="@+id/switchWhoseMessage"
@@ -60,11 +61,11 @@
 
         <ImageView
             android:id="@+id/imageViewSent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
             android:layout_alignParentEnd="true"
             android:rotationY="180"
-            app:srcCompat="@android:drawable/ic_menu_send" />
+            app:srcCompat="@drawable/enterarrow" />
     </RelativeLayout>
 
     <Space

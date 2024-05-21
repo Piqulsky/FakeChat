@@ -48,7 +48,8 @@
                 android:layout_gravity="center"
                 android:background="?android:attr/selectableItemBackground"
                 android:scaleType="fitXY"
-                android:src="@android:drawable/ic_menu_revert" />
+                android:scaleX="-.75"
+                android:src="@drawable/sendarrow" />
 
             <ImageView
                 android:id="@+id/imageViewReceiver"
@@ -118,7 +119,7 @@
                 android:paddingRight="10sp"
                 android:paddingBottom="10sp"
                 android:scaleType="fitXY"
-                android:src="@android:drawable/ic_menu_call" />
+                android:src="@drawable/call" />
 
             <EditText
                 android:id="@+id/editTextMessage"
@@ -147,7 +148,7 @@
                 android:paddingRight="10sp"
                 android:paddingBottom="10sp"
                 android:scaleType="fitXY"
-                android:src="@android:drawable/ic_menu_send" />
+                android:src="@drawable/sendarrow" />
 
         </LinearLayout>
     </LinearLayout>

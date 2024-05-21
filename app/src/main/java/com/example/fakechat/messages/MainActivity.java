@@ -14,6 +14,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
             receiver = 0;
             chatsName = "Chats";
-            colorHex = "#FF9800";
+            colorHex = "#168AFF";
             secondaryThemeHex = "#434343";
             bgColorHex = "";
             bgImageUri = "";
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         appData.get(receiver).getDelayedData().clear();
 
         ImageButton sendButton = findViewById(R.id.imageViewSend);
+        sendButton.setColorFilter(Color.parseColor(primaryHex), PorterDuff.Mode.MULTIPLY);
         sendButton.setOnClickListener(view -> {
             EditText editTextMessage = findViewById(R.id.editTextMessage);
             if(!editTextMessage.getText().toString().equals(""))
@@ -137,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ImageButton returnButton = findViewById(R.id.imageViewReturn);
+        returnButton.setColorFilter(Color.parseColor(primaryHex), PorterDuff.Mode.MULTIPLY);
         returnButton.setOnClickListener(view -> {
             Intent chats =  new Intent(this, ChatsActivity.class);
             chats.putExtra("AppData", appData);
@@ -151,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ImageButton callButton = findViewById(R.id.imageViewCall);
+        callButton.setColorFilter(Color.parseColor(primaryHex), PorterDuff.Mode.MULTIPLY);
         callButton.setOnClickListener(view -> {
             Intent call =  new Intent(this, CallActivity.class);
             call.putExtra("AppData", appData);

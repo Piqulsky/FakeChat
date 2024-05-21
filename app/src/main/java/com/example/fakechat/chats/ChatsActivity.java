@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -73,7 +74,11 @@ public class ChatsActivity extends AppCompatActivity {
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        ImageView imageViewChatSign = findViewById(R.id.imageViewChatSign);
+        imageViewChatSign.setColorFilter(Color.parseColor(primaryHex), PorterDuff.Mode.MULTIPLY);
+
         ImageButton moreButton = findViewById(R.id.imageViewMore);
+        moreButton.setColorFilter(Color.parseColor(primaryHex), PorterDuff.Mode.MULTIPLY);
         moreButton.setOnClickListener(view -> {
             Intent settings =  new Intent(this, SettingsActivity.class);
             settings.putExtra("AppData", appData);

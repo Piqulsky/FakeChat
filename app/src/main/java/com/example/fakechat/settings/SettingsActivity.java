@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -140,6 +141,8 @@ public class SettingsActivity extends AppCompatActivity {
             imageViewBackground.setImageURI(Uri.parse(bgImageUri));
 
         Button selectBgButton = findViewById(R.id.bgButton);
+        selectBgButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(colorHex)));
+        selectBgButton.setTextColor(Color.parseColor(primaryHex));
         selectBgButton.setOnClickListener(view -> {
             try {
                 getImage.launch("image/*");

@@ -1,38 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="75sp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageViewAvatar"
-        android:layout_width="80sp"
-        android:layout_height="80sp"
-        android:cropToPadding="true"
-        android:paddingLeft="10sp"
-        android:paddingTop="10sp"
-        android:paddingRight="10sp"
-        android:paddingBottom="10sp"
-        android:scaleType="centerCrop" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75sp">
 
-    <TextView
-        android:id="@+id/textViewChatReceiver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/imageViewAvatar"
-        android:paddingStart="8sp"
-        android:text="Receiver"
-        android:textColor="#000000"
-        android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/imageViewAvatar"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:cropToPadding="true"
+            android:paddingLeft="10sp"
+            android:paddingTop="10sp"
+            android:paddingRight="10sp"
+            android:paddingBottom="10sp"
+            android:scaleType="centerCrop" />
 
-    <ImageButton
-        android:id="@+id/imageViewButton"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:background="?android:attr/selectableItemBackground"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/ic_menu_send" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textViewChatReceiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/imageViewAvatar"
+            android:paddingStart="8sp"
+            android:text="Receiver"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/imageViewButton"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10sp"
+            android:scaleType="fitXY"
+            android:src="@drawable/enterarrow" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:background="#F0F0F0" />
+
+</LinearLayout>

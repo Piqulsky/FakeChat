@@ -34,8 +34,9 @@
             android:layout_width="30sp"
             android:layout_height="30sp"
             android:background="?android:attr/selectableItemBackground"
+            android:padding="3sp"
             android:scaleType="fitXY"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+            app:srcCompat="@drawable/x" />
 
     </LinearLayout>
 
@@ -76,9 +77,9 @@
         android:layout_width="30sp"
         android:layout_height="30sp"
         android:layout_gravity="right"
-        android:background="#FF9800"
+        android:background="?android:attr/selectableItemBackground"
         android:scaleType="fitXY"
-        app:srcCompat="@android:drawable/stat_notify_more" />
+        app:srcCompat="@drawable/newchat" />
 
     <TextView
         android:id="@+id/textView2"
@@ -98,8 +99,8 @@
         android:layout_width="30sp"
         android:layout_height="30sp"
         android:layout_gravity="right"
-        android:background="#FF9800"
+        android:background="?android:attr/selectableItemBackground"
         android:scaleType="fitXY"
-        app:srcCompat="@android:drawable/stat_notify_more" />
+        app:srcCompat="@drawable/newdelay" />
 
 </LinearLayout>
