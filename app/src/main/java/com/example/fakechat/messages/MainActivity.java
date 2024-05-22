@@ -65,14 +65,18 @@ public class MainActivity extends AppCompatActivity {
             secondaryHex = extras.getString("SecondaryHex");
         }catch (Exception e){
             appData = new ArrayList<>();
-            appData.add(new ChatData("Sergiusz", getUriToDrawable(this, R.drawable.avatar12).toString(), createDataArray()));
-            appData.get(0).getDelayedData().add(new DelayedData("Test", 1.0f));
-            appData.get(0).getDelayedData().add(new DelayedData("Test2", 4.0f));
-            appData.get(0).getDelayedData().add(new DelayedData("Test3", 5.0f));
-            appData.add(new ChatData("Igor", getUriToDrawable(this, R.drawable.avatar11).toString(), new ArrayList<>()));
+            appData.add(new ChatData("Joasia", getUriToDrawable(this, R.drawable.avatar1).toString(), createDataArray(2)));
+            appData.add(new ChatData("Tomek", getUriToDrawable(this, R.drawable.avatar3).toString(), createDataArray(1)));
             appData.get(1).setActivity("15m ago");
-            appData.add(new ChatData("Kaś", getUriToDrawable(this, R.drawable.avatar9).toString(), new ArrayList<>()));
+            appData.add(new ChatData("Adrian", getUriToDrawable(this, R.drawable.avatar2).toString(), createDataArray(3)));
+            appData.get(2).setActivity("20m ago");
             appData.get(2).setRead(false);
+            appData.add(new ChatData("Anna", getUriToDrawable(this, R.drawable.avatar5).toString(), createDataArray(4)));
+            appData.get(3).setRead(false);
+            appData.add(new ChatData("Sergiusz", getUriToDrawable(this, R.drawable.avatar12).toString(), createDataArray(0)));
+            appData.add(new ChatData("Igor", getUriToDrawable(this, R.drawable.avatar11).toString(), new ArrayList<>()));
+            appData.get(5).setRead(false);
+            appData.add(new ChatData("Kaś", getUriToDrawable(this, R.drawable.avatar9).toString(), new ArrayList<>()));
             appData.add(new ChatData("Bernard", getUriToDrawable(this, R.drawable.avatar10).toString(), new ArrayList<>()));
             appData.add(new ChatData());
 
@@ -127,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager.setReverseLayout(false);
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.scrollToPosition(recyclerAdapter.getItemCount() - 1);
 
         appData.get(receiver).getDelayedData().forEach(delayedData -> {
             recyclerView.postDelayed(() -> {
@@ -197,18 +202,86 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private ArrayList<MessageData> createDataArray(){
+    private ArrayList<MessageData> createDataArray(int par){
         ArrayList<MessageData> list = new ArrayList<>();
 
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received"));
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent"));
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received that is definitely much more longer and should be split"));
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent"));
-        list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent that is definitely much more longer and should be split"));
-        list.get(0).setRead(true);
-        list.get(1).setRead(true);
-        list.get(2).setRead(true);
-        list.get(3).setRead(true);
+        switch (par){
+            case 0:
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "This is message received that is definitely much more longer and should be split"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "This is message sent that is definitely much more longer and should be split"));
+                list.get(0).setRead(true);
+                list.get(1).setRead(true);
+                list.get(2).setRead(true);
+                list.get(3).setRead(true);
+                break;
+            case 1:
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Kto ma przewagę? Pan nad światem czy świat nad Panem?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Hm?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "W sensie wiesz"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Nie wiem Tomek"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Em. Jakby mając wszystko co mamy"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Szefów, ich firmy, szefów tych szefów, a także ustroje, którymi rządzą szefowie wszystkich szefów"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Czy oni rzeczywiście mają nad tym konrolę? Czy bardziej świat i jego warunki określają obecny stan rzeczy?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Ale cię wzięło na rozmyślenia"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Każdego nachodzą. Ja nie jestem wyjątkiem"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Coż. Ja myślę, że"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Zresztą ty wiesz, co ja uważam"));
+                list.forEach(messageData -> messageData.setRead(true));
+                list.get(9).setRead(false);
+                list.get(10).setRead(false);
+                break;
+            case 2:
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Tomek"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Tomek!"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Tomek!!!"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Tak?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Już jestem. Słucham cię"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Dobrze. Czekasz na kogoś?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Tak"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Na kogo?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Na kogoś"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Wiesz, że Sammy nie będzie zadowolony taką odpowiedzią"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Sammy już i tak nie jest zadowolony"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Ale to nieważne"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Czekam na Andy'ego"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "To znowu ten?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "I co z nim"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Musimy porozmawiać sobie o biznesie"));
+                list.forEach(messageData -> messageData.setRead(true));
+                break;
+            case 3:
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Tomek!"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Myślałem, że nie wrócisz"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Tak samo myślałem o tobie, bracie"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Jak?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Myślę"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Że po prostu miałem szczęście"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Wiesz, naprawdę dobrze od ciebie usłyszeć"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "A więc biznes"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Tsa"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Ta gorsza część"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Ale"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Zacznijmy od małej dygresji"));
+                list.forEach(messageData -> messageData.setRead(true));
+                break;
+            case 4:
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Nic się nie stało?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Znowu jakiś koszmar?"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Ta"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Mam nadzieję, że tylko koszmar"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Wiesz że jestem obok w razie w"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Muszę się zbierać"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Do pracy"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_SENT, "Dzięki"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Weź. Przestań dziękować"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Na szybko jeszcze"));
+                list.add(new MessageData(MessageData.LAYOUT_MESSAGE_RECEIVED, "Co tam na spotkaniu?"));
+                list.forEach(messageData -> messageData.setRead(true));
+                break;
+        }
 
         return list;
     }
