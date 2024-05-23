@@ -65,16 +65,16 @@ public class MainActivity extends AppCompatActivity {
             secondaryHex = extras.getString("SecondaryHex");
         }catch (Exception e){
             appData = new ArrayList<>();
+            appData.add(new ChatData("Sergiusz", getUriToDrawable(this, R.drawable.avatar12).toString(), new ArrayList<>()));
             appData.add(new ChatData("Joasia", getUriToDrawable(this, R.drawable.avatar1).toString(), createDataArray(2)));
             appData.add(new ChatData("Tomek", getUriToDrawable(this, R.drawable.avatar3).toString(), createDataArray(1)));
-            appData.get(1).setActivity("15m ago");
+            appData.get(2).setActivity("15m ago");
             appData.add(new ChatData("Adrian", getUriToDrawable(this, R.drawable.avatar2).toString(), createDataArray(3)));
-            appData.get(2).setActivity("20m ago");
-            appData.get(2).setRead(false);
-            appData.add(new ChatData("Anna", getUriToDrawable(this, R.drawable.avatar5).toString(), createDataArray(4)));
+            appData.get(3).setActivity("20m ago");
             appData.get(3).setRead(false);
-            appData.add(new ChatData("Sergiusz", getUriToDrawable(this, R.drawable.avatar12).toString(), createDataArray(0)));
-            appData.add(new ChatData("Igor", getUriToDrawable(this, R.drawable.avatar11).toString(), new ArrayList<>()));
+            appData.add(new ChatData("Anna", getUriToDrawable(this, R.drawable.avatar5).toString(), createDataArray(4)));
+            appData.get(4).setRead(false);
+            appData.add(new ChatData("Igor", getUriToDrawable(this, R.drawable.avatar11).toString(), createDataArray(0)));
             appData.get(5).setRead(false);
             appData.add(new ChatData("Kaś", getUriToDrawable(this, R.drawable.avatar9).toString(), new ArrayList<>()));
             appData.add(new ChatData("Bernard", getUriToDrawable(this, R.drawable.avatar10).toString(), new ArrayList<>()));
@@ -314,3 +314,22 @@ public class MainActivity extends AppCompatActivity {
                 + '/' + context.getResources().getResourceEntryName(drawableId) );
     }
 }
+
+/*
+Film Plan:
+- Message (Znowu)
+- Call
+- Editor
+- Add messages (>Hej, jak leci <Okej, a u ciebie?)
+- Add delayed messages(>Nawet nawet <A praca? >Spoko)
+- Show the changed chat
+- Back to editor
+- Change chats name (Czaty)
+- Change colors to
+* #1f2326
+* #2d3035
+* #fcffff
+* #fcffff
+* #373a41
+
+ */
