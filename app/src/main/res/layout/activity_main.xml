@@ -8,7 +8,8 @@
     android:clickable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".messages.MainActivity" >
+    tools:context=".messages.MainActivity"
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/mainBackgroundImage"
@@ -18,7 +19,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/bg_description" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -49,7 +51,8 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:scaleType="fitXY"
                 android:scaleX="-.75"
-                android:src="@drawable/sendarrow" />
+                android:src="@drawable/sendarrow"
+                android:contentDescription="@string/chat_back_description" />
 
             <ImageView
                 android:id="@+id/imageViewReceiver"
@@ -57,10 +60,11 @@
                 android:layout_height="60sp"
                 android:layout_marginTop="5sp"
                 android:cropToPadding="true"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/chat_avatar_description" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
@@ -70,8 +74,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="10sp"
+                    android:paddingEnd="0sp"
                     android:paddingTop="10sp"
-                    android:text="Receiver"
+                    android:text="@string/receiver_default"
                     android:textColor="#FFFFFF"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -83,8 +88,8 @@
 
                     <View
                         android:id="@+id/activityDot"
-                        android:layout_width="10sp"
-                        android:layout_height="10sp"
+                        android:layout_width="11sp"
+                        android:layout_height="11sp"
                         android:layout_marginStart="20sp"
                         android:layout_marginTop="6sp"
                         android:background="@drawable/activity_dot" />
@@ -94,8 +99,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingStart="5sp"
+                        android:paddingEnd="0sp"
                         android:paddingBottom="4sp"
-                        android:text="Activity"
+                        android:text="@string/chat_activity_default"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
@@ -106,7 +112,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMessages"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             tools:layout_conversion_absoluteHeight="584dp"
             tools:layout_conversion_absoluteWidth="411dp"
@@ -134,24 +140,27 @@
                 android:paddingRight="10sp"
                 android:paddingBottom="10sp"
                 android:scaleType="fitXY"
-                android:src="@drawable/call" />
+                android:src="@drawable/call"
+                android:contentDescription="@string/chat_call_description" />
 
             <EditText
                 android:id="@+id/editTextMessage"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
                 android:layout_weight="1"
                 android:background="#FFFFFF"
                 android:ems="10"
-                android:hint="Message..."
+                android:hint="@string/message_hint_default"
                 android:inputType="text|textShortMessage"
                 android:paddingStart="7sp"
+                android:paddingEnd="0sp"
                 android:paddingTop="5sp"
                 android:paddingBottom="5sp"
                 android:textColor="#000000"
                 android:textColorHint="#777777"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:autofillHints="" />
 
             <ImageButton
                 android:id="@+id/imageViewSend"
@@ -163,7 +172,8 @@
                 android:paddingRight="10sp"
                 android:paddingBottom="10sp"
                 android:scaleType="fitXY"
-                android:src="@drawable/sendarrow" />
+                android:src="@drawable/sendarrow"
+                android:contentDescription="@string/chat_send_description" />
 
         </LinearLayout>
     </LinearLayout>

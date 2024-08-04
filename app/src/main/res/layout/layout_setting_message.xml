@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusableInTouchMode="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,17 +16,19 @@
 
         <EditText
             android:id="@+id/editTextSettingMessage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/message_bubble_received"
             android:ems="10"
-            android:hint="Message..."
+            android:hint="@string/message_hint_default"
             android:inputType="text|textShortMessage"
             android:padding="5dp"
             android:paddingStart="15dp"
+            android:paddingEnd="0sp"
             android:textColor="#FFFFFF"
-            android:textColorHint="#AAAAAA" />
+            android:textColorHint="#AAAAAA"
+            android:autofillHints="" />
 
         <ImageButton
             android:id="@+id/imageButtonDeleteMessage"
@@ -33,14 +37,16 @@
             android:background="?android:attr/selectableItemBackground"
             android:padding="1sp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/x" />
+            app:srcCompat="@drawable/x"
+            android:contentDescription="@string/l_message_x_description" />
     </LinearLayout>
 
     <Switch
         android:id="@+id/switchRead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Is the message read? " />
+        android:text="@string/l_message_read_default"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -50,14 +56,16 @@
             android:id="@+id/imageViewReceived"
             android:layout_width="30sp"
             android:layout_height="30sp"
-            app:srcCompat="@drawable/enterarrow" />
+            app:srcCompat="@drawable/enterarrow"
+            android:contentDescription="@string/l_message_whose_description" />
 
         <Switch
             android:id="@+id/switchWhoseMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <ImageView
             android:id="@+id/imageViewSent"
@@ -65,7 +73,8 @@
             android:layout_height="30sp"
             android:layout_alignParentEnd="true"
             android:rotationY="180"
-            app:srcCompat="@drawable/enterarrow" />
+            app:srcCompat="@drawable/enterarrow"
+            android:contentDescription="@string/l_message_whose_description" />
     </RelativeLayout>
 
     <Space

@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusableInTouchMode="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,17 +18,19 @@
             android:id="@+id/imageViewSettingAvatar"
             android:layout_width="75sp"
             android:layout_height="75sp"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/l_setting_avatar_description" />
 
         <EditText
             android:id="@+id/editTextSettingReceiver"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Name..."
+            android:hint="@string/l_setting_name_hint_default"
             android:inputType="text|textPersonName"
-            android:textSize="34sp" />
+            android:textSize="34sp"
+            android:autofillHints="" />
 
         <ImageButton
             android:id="@+id/imageButtonDeleteChat"
@@ -36,7 +39,8 @@
             android:background="?android:attr/selectableItemBackground"
             android:padding="3sp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/x" />
+            app:srcCompat="@drawable/x"
+            android:contentDescription="@string/l_setting_x_description" />
 
     </LinearLayout>
 
@@ -44,7 +48,8 @@
         android:id="@+id/switchIsRead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Is Read: " />
+        android:text="@string/l_setting_read_default"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +59,7 @@
             android:id="@+id/textViewSettingActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Activity: "
+            android:text="@string/l_setting_activity_default"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -63,8 +68,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="online, 15m ago, offline..."
-            android:inputType="text|textShortMessage" />
+            android:hint="@string/l_setting_activity_hint_default"
+            android:inputType="text|textShortMessage"
+            android:autofillHints="" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -76,16 +82,17 @@
         android:id="@+id/imageButtonAddMessage"
         android:layout_width="30sp"
         android:layout_height="30sp"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:background="?android:attr/selectableItemBackground"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/newchat" />
+        app:srcCompat="@drawable/newchat"
+        android:contentDescription="@string/l_setting_add_description" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delayed messages:"
+        android:text="@string/l_setting_delayed_default"
         android:textColor="#000000"
         android:textSize="20sp" />
 
@@ -98,9 +105,10 @@
         android:id="@+id/imageButtonAddDelayed"
         android:layout_width="30sp"
         android:layout_height="30sp"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:background="?android:attr/selectableItemBackground"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/newdelay" />
+        app:srcCompat="@drawable/newdelay"
+        android:contentDescription="@string/l_setting_add_description" />
 
 </LinearLayout>

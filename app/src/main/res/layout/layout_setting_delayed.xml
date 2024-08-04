@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusableInTouchMode="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,17 +15,19 @@
 
         <EditText
             android:id="@+id/editTextSettingDelayedMessage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/message_bubble_received"
             android:ems="10"
-            android:hint="Message..."
+            android:hint="@string/message_hint_default"
             android:inputType="text|textShortMessage"
             android:padding="5dp"
             android:paddingStart="15dp"
+            android:paddingEnd="0sp"
             android:textColor="#FFFFFF"
-            android:textColorHint="#AAAAAA" />
+            android:textColorHint="#AAAAAA"
+            android:autofillHints="" />
 
         <ImageButton
             android:id="@+id/imageButtonDeleteDelayed"
@@ -33,7 +36,8 @@
             android:background="?android:attr/selectableItemBackground"
             android:padding="1sp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/x" />
+            app:srcCompat="@drawable/x"
+            android:contentDescription="@string/l_message_x_description" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,7 +49,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delay in seconds: "
+            android:text="@string/l_delayed_default"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -55,7 +59,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:text="0.0" />
+            android:text="@string/l_delayed_value_default"
+            android:autofillHints="" />
     </LinearLayout>
 
     <Space

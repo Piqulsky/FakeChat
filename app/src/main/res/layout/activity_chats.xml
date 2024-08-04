@@ -8,7 +8,8 @@
     android:clickable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".messages.MainActivity" >
+    tools:context=".messages.MainActivity"
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/chatsBackgroundImage"
@@ -18,7 +19,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/bg_description" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -42,16 +44,18 @@
                 android:layout_width="75sp"
                 android:layout_height="75sp"
                 android:padding="15sp"
-                app:srcCompat="@drawable/chat" />
+                app:srcCompat="@drawable/chat"
+                android:contentDescription="@string/chats_chats_description" />
 
             <TextView
                 android:id="@+id/textViewChats"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:paddingStart="10sp"
+                android:paddingEnd="0sp"
                 android:paddingTop="15sp"
-                android:text="Chats"
+                android:text="@string/app_name"
                 android:textColor="#FFFFFF"
                 android:textSize="32sp"
                 android:textStyle="bold" />
@@ -66,13 +70,14 @@
                 android:paddingRight="20sp"
                 android:paddingBottom="20sp"
                 android:scaleType="fitXY"
-                android:src="@drawable/menu" />
+                android:src="@drawable/menu"
+                android:contentDescription="@string/chats_more_description" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
 

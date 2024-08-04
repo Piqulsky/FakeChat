@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:clickable="true"
     android:focusableInTouchMode="true"
-    tools:context=".settings.SettingsActivity">
+    tools:context=".settings.SettingsActivity"
+    android:focusable="true">
 
     <LinearLayout
         android:id="@+id/linearLayoutSettingsHeader"
@@ -26,15 +27,17 @@
             android:paddingRight="20sp"
             android:paddingBottom="20sp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/save" />
+            app:srcCompat="@drawable/save"
+            android:contentDescription="@string/settings_save_description" />
 
         <TextView
             android:id="@+id/textViewSettings"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="10sp"
+            android:paddingEnd="0sp"
             android:paddingTop="15sp"
-            android:text="Editor"
+            android:text="@string/settings_editor_default"
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold" />
@@ -65,7 +68,7 @@
                         android:id="@+id/textViewChatsName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chats name: "
+                        android:text="@string/settings_name_default"
                         android:textSize="24sp" />
 
                     <EditText
@@ -73,8 +76,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="Chats name..."
-                        android:inputType="textPersonName"
+                        android:hint="@string/settings_name_hint_default"
+                        android:inputType="text|textShortMessage"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -87,7 +90,7 @@
                         android:id="@+id/textViewColorTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Color theme: "
+                        android:text="@string/settings_primary_theme_default"
                         android:textSize="24sp" />
 
                     <View
@@ -101,9 +104,10 @@
                         android:id="@+id/editTextColorTheme"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
                         android:ems="10"
-                        android:hint="#Color code..."
-                        android:inputType="textPersonName"
+                        android:hint="@string/settings_color_hint_default"
+                        android:inputType="text"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -116,7 +120,7 @@
                         android:id="@+id/textViewSecondaryTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Secondary theme: "
+                        android:text="@string/settings_secondary_theme_default"
                         android:textSize="24sp" />
 
                     <View
@@ -131,9 +135,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="7"
-                        android:hint="#Color code..."
-                        android:inputType="textPersonName"
-                        android:textSize="20sp" />
+                        android:hint="@string/settings_color_hint_default"
+                        android:inputType="text"
+                        android:textSize="20sp"
+                        android:autofillHints="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -145,7 +150,7 @@
                         android:id="@+id/textViewPrimaryColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Primary color: "
+                        android:text="@string/settings_primary_color_default"
                         android:textSize="24sp" />
 
                     <View
@@ -160,9 +165,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="7"
-                        android:hint="#Color code..."
-                        android:inputType="textPersonName"
-                        android:textSize="20sp" />
+                        android:hint="@string/settings_color_hint_default"
+                        android:inputType="text"
+                        android:textSize="20sp"
+                        android:autofillHints="" />
 
 
                 </LinearLayout>
@@ -176,7 +182,7 @@
                         android:id="@+id/textViewSecondaryColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Secondary color: "
+                        android:text="@string/settings_secondary_color_default"
                         android:textSize="24sp" />
 
                     <View
@@ -191,9 +197,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="7"
-                        android:hint="#Color code..."
-                        android:inputType="textPersonName"
-                        android:textSize="20sp" />
+                        android:hint="@string/settings_color_hint_default"
+                        android:inputType="text"
+                        android:textSize="20sp"
+                        android:autofillHints="" />
 
 
                 </LinearLayout>
@@ -207,7 +214,7 @@
                         android:id="@+id/textViewBackground"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Background color: "
+                        android:text="@string/settings_bg_color_default"
                         android:textSize="24sp" />
 
                     <View
@@ -222,9 +229,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="7"
-                        android:hint="#Color code..."
-                        android:inputType="textPersonName"
-                        android:textSize="20sp" />
+                        android:hint="@string/settings_color_hint_default"
+                        android:inputType="text"
+                        android:textSize="20sp"
+                        android:autofillHints="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -237,7 +245,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="Background image: "
+                        android:text="@string/settings_bg_image_default"
                         android:textSize="24sp" />
 
                     <Button
@@ -246,13 +254,14 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:backgroundTint="#FF9800"
-                        android:text="Select"
+                        android:text="@string/settings_bg_select_default"
                         android:textColor="#FFFFFF" />
 
                     <ImageView
                         android:id="@+id/imageViewBackground"
                         android:layout_width="60sp"
-                        android:layout_height="60sp" />
+                        android:layout_height="60sp"
+                        android:contentDescription="@string/settings_bg_description" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -273,10 +282,11 @@
                     android:id="@+id/imageButtonAddChat"
                     android:layout_width="50sp"
                     android:layout_height="50sp"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:background="?android:attr/selectableItemBackground"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/newmessage" />
+                    app:srcCompat="@drawable/newmessage"
+                    android:contentDescription="@string/settings_add_description" />
 
             </LinearLayout>
         </LinearLayout>

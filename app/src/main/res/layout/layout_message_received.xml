@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/imageViewSender"
@@ -13,7 +14,8 @@
         android:layout_height="40sp"
         android:layout_marginTop="5sp"
         android:layout_marginBottom="5sp"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/l_message_avatar_description" />
 
     <TextView
         android:id="@+id/textViewMessageReceived"
@@ -28,7 +30,7 @@
         android:paddingTop="5sp"
         android:paddingEnd="10sp"
         android:paddingBottom="5sp"
-        android:text="Message content"
+        android:text="@string/l_message_default"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
 

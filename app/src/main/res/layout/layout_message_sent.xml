@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:focusable="true">
 
     <TextView
         android:id="@+id/textViewMessageSent"
@@ -20,7 +21,7 @@
         android:paddingTop="5sp"
         android:paddingEnd="10sp"
         android:paddingBottom="5sp"
-        android:text="Message content"
+        android:text="@string/l_message_default"
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
@@ -30,9 +31,10 @@
         android:layout_width="15sp"
         android:layout_height="15sp"
         android:layout_below="@id/textViewMessageSent"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="3sp"
         android:layout_marginBottom="5sp"
         android:scaleType="centerCrop"
-        app:srcCompat="@android:drawable/ic_menu_directions" />
+        app:srcCompat="@android:drawable/ic_menu_directions"
+        android:contentDescription="@string/l_message_avatar_description" />
 </RelativeLayout>
