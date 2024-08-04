@@ -145,7 +145,7 @@
                 android:background="#FFFFFF"
                 android:ems="10"
                 android:hint="Message..."
-                android:inputType="textPersonName"
+                android:inputType="text|textShortMessage"
                 android:paddingStart="7sp"
                 android:paddingTop="5sp"
                 android:paddingBottom="5sp"

@@ -41,21 +41,19 @@
 
     </LinearLayout>
 
-    <HorizontalScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:focusableInTouchMode="true">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -257,10 +255,6 @@
                         android:layout_height="60sp" />
                 </LinearLayout>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="20sp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -270,9 +264,8 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewSettings"
-                    android:layout_width="410sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -286,8 +279,7 @@
                     app:srcCompat="@drawable/newmessage" />
 
             </LinearLayout>
-
         </LinearLayout>
-    </HorizontalScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
