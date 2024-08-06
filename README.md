@@ -73,6 +73,8 @@ Whether you're an amateur filmmaker, a YouTube content creator, or a beginner lo
 
 Feel free to explore the code, contribute, and customize the application to suit your unique requirements. With FakeChat, bring your creative visions to life with ease and without restrictions.
 
+If you enjoy the project, you can support me here - [buy me a tea :D](https://ko-fi.com/piqulsky)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
@@ -314,12 +316,16 @@ Piqulsky - [https://linktr.ee/piqulsky](https://linktr.ee/piqulsky) - piqulsky@g
 
 Project Link: [https://github.com/Piqulsky/FakeChat](https://github.com/Piqulsky/FakeChat)
 
+Support: [https://ko-fi.com/piqulsky](https://ko-fi.com/piqulsky)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
 * [othneildrew's Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+* Hania Pikulska and rest of "Untangling" (2024) team for firsts tests
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
