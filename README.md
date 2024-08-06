@@ -162,7 +162,114 @@ Now you're ready to explore the codebase, make modifications, and contribute to 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-WIP
+### Chatting
+
+<img src="images/Picture1.png" alt="Chat">
+
+**Chat view** in FakeChat allows users to simulate a realistic chat environment with various customizable options. Below are the key functionalities available in the Chatting interface:
+
+- **Avatar Customization:**
+  - The avatar of the person you are messaging can be customized. To change the avatar, tap on the current avatar icon. This action will open the photo gallery, where you can select a new image to represent the contact. This feature helps in tailoring the chat interface to match your project's requirements.
+
+- **Activity Status:**
+  - Below the avatar, the current activity status of the person is displayed. This status indicates whether the person is "online" or not. If the person is online, the status will appear in green; if not, it will be gray. This visual cue helps in simulating the dynamic nature of real-time chat applications.
+
+- **Message History:**
+  - Users can scroll through earlier messages in the chat to review the conversation history. This feature is useful for creating a sense of continuity and context in the simulated chat.
+
+- **Writing New Messages:**
+  - To write a new message, use the text input field at the bottom of the chat view. Once you enter your message, you can simulate sending it. Each message sent can be customized with a status indicator below it, showing whether the message has been read or not, adding an extra layer of realism.
+
+- **Call Functionality:**
+  - In the lower left corner of the chat view, there is a call button. Tapping this button switches the interface to a fake call view, simulating a call with the contact. This feature is ideal for scenarios where a voice conversation is needed in the narrative.
+
+- **Exiting Call View:**
+  - To leave the fake call view, press the red disconnect button. This action ends the call simulation and returns you to the chat interface.
+
+- **Exiting Chat View:**
+  - To exit the chat view and return to the main interface or previous screen, press the button in the upper left corner. This button acts as a back navigation control, allowing you to leave the chat session.
+
+These features provide a comprehensive and customizable experience, enabling users to create realistic chat scenarios for their projects. Whether you're simulating a conversation or a call, FakeChat offers a versatile platform to enhance your creative work.
+
+### Chats
+
+<img src="images/Picture10.png" alt="Chats">
+
+**Other chats view** in FakeChat allows users to manage multiple chat conversations, each customizable with unique attributes. Here's an overview of the functionalities available in this section:
+
+- **Chats Name:**
+  - This view is labeled with a name, which can represent the app name or a group, similar to naming conventions in real chat applications.
+
+- **Navigating Between Chats:**
+  - Users can switch between different chat conversations using the arrow buttons located on the right side of each chat entry. This navigation method provides an intuitive way to explore various chats, whether they're individual or group conversations.
+
+- **Read Status Indicators:**
+  - The name of each chat serves as a visual indicator of whether the chat has been read. If the chat has unread messages, the name appears in bold text, signaling that there are new, unseen messages. If all messages have been read, the text will appear in regular font weight. This feature mimics the notification style of real messaging apps, enhancing the authenticity of the simulation.
+
+- **Editing Conversations and Visual Aspects:**
+  - To edit conversations and customize visual elements, users can press the button located in the upper right corner of the screen. This action takes the user into an editor mode, where they can:
+    - Modify the content of any chat conversation, including adding, deleting, or altering messages.
+    - Change the visual aspects of the chat interface, such as chat names, avatars, and other aesthetic elements, allowing for a fully tailored chat experience.
+
+These features provide users with comprehensive control over multiple conversations within FakeChat. Whether simulating a group chat or one-on-one conversation, these tools help create a believable and engaging chat environment for your projects.
+
+### Editor
+
+<img src="images/Picture7.png" alt="Editor">
+
+The **Editor** section in FakeChat provides users with comprehensive tools to customize and manage chat conversations and visual aspects. Here’s how you can utilize the Editor:
+
+- **Editing Visual Aspects:**
+  - **Chat Name:** You can modify the name of each chat to better reflect its context or participants.
+  - **Color Themes:** Adjust the visual styling of the chat interface by setting the following:
+    - **Main Color Theme:** Choose the primary color used for chat bubbles and highlights. Input the color in HTML color code format (e.g., `#FF5733`).
+    - **Secondary Color Theme:** Set the secondary color for less prominent elements. Use an HTML color code format (e.g., `#C70039`).
+    - **Primary Text Color:** Define the color for primary text within the chat. Provide the color in HTML color code format (e.g., `#FFFFFF`).
+    - **Secondary Text Color:** Select the color for secondary text, such as timestamps or less important text. Input an HTML color code (e.g., `#BDC3C7`).
+    - **Background Color:** Set the background color for the chat view using HTML color codes (e.g., `#2C3E50`). If a background color is not set, you can upload a background image.
+    - **Background Image:** If no background color is specified, you can select a background image from your gallery to enhance the chat's appearance.
+
+- **Editing Chats:**
+  - **Chat Name:** Update the name of the chat for better organization or context.
+  - **Read Status:** Toggle whether the chat is marked as read or unread. Unread chats are indicated by a bold name, while read chats are in regular font weight.
+  - **Activity Status:** Set the current activity status of the chat participant(s) (e.g., "online" or "offline"). This status will reflect in the chat view.
+  - **Managing Messages:**
+    - **Adding Messages:** Add new messages to the chat by tapping the message bubble with three dots. This opens an option to insert a new message.
+    - **Editing Messages:** Each message bubble can be edited directly. You can:
+      - Modify the text content of the message.
+      - Toggle whether the message is marked as read or unread using a switch.
+      - Change the author of the message via a switch input in the middle, which will adjust the message bubble’s color accordingly.
+    - **Delayed Messages:** Add delayed messages by selecting the message bubble with a clock icon. These messages are always sent by the other side. Below the editable text, there’s an input field to set the delay in seconds before the message is delivered.
+
+- **Adding New Chats:**
+  - To create a new chat, tap the button at the bottom of the editor screen featuring a message bubble with a plus symbol. This will add a new chat entry to your list, allowing you to customize it as needed.
+
+The Editor section allows for detailed and flexible management of chat conversations and their visual presentation, ensuring that FakeChat meets your specific project requirements.
+
+### Possibilities
+
+**FakeChat** provides extensive visual customization options, enabling you to imitate popular messaging communicators with a high degree of accuracy. Here are some examples showcasing the visual possibilities available within the app:
+
+<div>
+    <img src="images/Picture2.png" alt="Alternative">
+    <img src="images/Picture3.png" alt="Alternative">
+    <img src="images/Picture4.png" alt="Alternative">
+    <img src="images/Picture5.png" alt="Alternative">
+    <img src="images/Picture6.png" alt="Alternative">
+</div>
+
+With these visual customization options, FakeChat enables you to replicate the aesthetics of various popular communicators. Whether you need to simulate a specific chat application or create a unique visual style, FakeChat’s flexibility helps you achieve a realistic and tailored chat environment for any project.
+
+### Result
+
+FakeChat’s diverse visual customization features and comprehensive chat management tools provide filmmakers and content creators with the ability to create highly realistic and tailored chat simulations. By allowing users to imitate popular messaging interfaces, adjust visual elements like color themes and backgrounds, and manage chat conversations with options for delayed messages and read statuses, FakeChat equips creators with a versatile platform to enhance their storytelling. Whether replicating everyday interactions or crafting intricate dialogue scenes, these features ensure that each simulated chat is both authentic and visually aligned with the project's needs, helping to bring digital communication scenarios to life with precision.
+
+<div>
+    <img src="images/Picture8.jpg" alt="Untangling">
+    <img src="images/Picture9.jpg" alt="Untangling">
+</div>
+
+*Shots from "Untangling" (2024) directed by Hania Pikulska.*
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
