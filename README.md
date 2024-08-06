@@ -334,5 +334,5 @@ Project Link: [https://github.com/Piqulsky/FakeChat](https://github.com/Piqulsky
 [issues-shield]: https://img.shields.io/github/issues/Piqulsky/FakeChat.svg?style=for-the-badge
 [issues-url]: https://github.com/Piqulsky/FakeChat/issues
 [license-shield]: https://img.shields.io/github/license/Piqulsky/FakeChat.svg?style=for-the-badge
-[license-url]: https://github.com/Piqulsky/FakeChat/blob/master/LICENCE.txt
+[license-url]: https://github.com/Piqulsky/FakeChat/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
