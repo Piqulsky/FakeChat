@@ -1,5 +1,7 @@
 <a name="readme-top"></a>
 
+To download the app see: [Releases](https://github.com/Piqulsky/FakeChat/releases)
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
