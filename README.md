@@ -326,6 +326,7 @@ Support: [https://ko-fi.com/piqulsky](https://ko-fi.com/piqulsky)
 
 * [othneildrew's Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * Hania Pikulska and rest of "Untangling" (2024) team for firsts tests
+* Sergiusz Brasławski for lending the script of "Welcome to My World" (2024) to fill conversations
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
